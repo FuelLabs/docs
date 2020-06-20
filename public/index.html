@@ -42,7 +42,9 @@
               result.map(({ item }) => {
                 const itemHTML = `
                   <div>
-                    <h3>${item.title}</h3>
+                    <h3><a href="${item.title.replace('.md', '')}">
+                      ${item.title.replace('.md', '').replace('.html', '').split('___').slice(-1)}
+                    </a></h3>
                     <p>${item.content.slice(0, 500)}...</p>
                   </div>
                 `;
