@@ -7,16 +7,20 @@
 
     <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
-      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
-    <script type="text/javascript">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
 
+    <script src="./index.js"></script>
+
+    <script type="text/javascript">
       hljs.initHighlightingOnLoad();
 
-      const files = %%files%%;
+      const files = '%%files%%';
 
       function search(pattern) {
+        document.getElementById('content').innerHTML = '';
+
         for (file of files) {
           window.axios.get('/' + file + '.md')
           .then(function (response) {
@@ -31,8 +35,21 @@
               ],
             });
 
-            // handle success
-            console.log(fuse.search(pattern));
+            const result = fuse.search(pattern);
+
+            if (result.length) {
+
+              result.map(({ item }) => {
+                const itemHTML = `
+                  <div>
+                    <h3>${item.title}</h3>
+                    <p>${item.content.slice(0, 500)}...</p>
+                  </div>
+                `;
+
+                document.getElementById('content').innerHTML += itemHTML;
+              });
+            }
           })
           .catch(function (error) {
             // handle error
@@ -41,12 +58,27 @@
         }
       }
 
-      // search('nick');
+      window.addEventListener('load', () => {
+        document
+          .getElementById('search')
+          .addEventListener("keyup", event => {
+            event.preventDefault();
+
+            console.log(event.target.value);
+
+            if (event.keyCode === 13) {
+              search(event.target.value);
+            }
+        });
+      });
+
     </script>
 
-    <div id="panel">%%panel%%</div>
+    <div id="panel">
+      <input id="search" placeholder="Search" />
+      %%panel%%
+    </div>
     <div id="content">%%content%%</div>
-    <div id="search"></div>
 
   <body>
 </html>

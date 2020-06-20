@@ -2,3 +2,4 @@
 dist
 .cache
 .DS_Store
+build

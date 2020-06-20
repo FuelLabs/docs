@@ -3,11 +3,13 @@ const path = require('path');
 const fs = require('fs').promises;
 const fse = require('fs-extra');
 const showdown  = require('showdown');
+const { markdownToTxt } = require('markdown-to-txt');
 const converter = new showdown.Converter();
 
 const src = './src/';
 const dist = './dist/';
-const index = './public/index.html';
+const build = './build/';
+const index = './build/index.html';
 
 const treeToPanel = _tree => _tree
   .map(v => v.children.length
@@ -24,15 +26,25 @@ const filterVersion = (_tree, version = 'v1.0.0') => _tree.filter(v => v.name ==
   const header = await fs.readFile(index, 'utf8');
   const panel = treeToPanel(filterVersion(tree(src)));
 
+  await fse.remove(dist);
+
+  // copy parcel build over
+  for (const file of list(build)) {
+    const content = await fs.readFile(path.join(build, file), 'utf8');
+    await fse.outputFile(path.join(dist, file), content);
+  }
+
+  // build markdown
   for (const file of list(src)) {
     const content = await fs.readFile(path.join(src, file), 'utf8');
     const html = header
-      .replace('%%files%%', arrFiles)
+      .replace("'%%files%%'", arrFiles)
+      .replace('"%%files%%"', arrFiles)
       .replace('%%title%%', title(file))
       .replace('%%content%%', converter.makeHtml(content))
       .replace('%%panel%%', panel);
     await fse.outputFile(path.join(dist, normalize(file)), html);
-    await fse.outputFile(path.join(dist, normalize(file) + '.md'), content);
+    await fse.outputFile(path.join(dist, normalize(file) + '.md'), markdownToTxt(content));
 
     if (!indexFile) {
       await fse.outputFile(path.join(dist, 'index.html'), html);
