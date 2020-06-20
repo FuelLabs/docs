@@ -1,0 +1,32 @@
+{
+  "name": "fuel-docs",
+  "version": "1.0.0",
+  "description": "The Fuel documentation.",
+  "main": "config/build.js",
+  "scripts": {
+    "start": "parcel dist/index.html",
+    "build": "node config/build",
+    "publish": "npm run build && now dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FuelLabs/docs.git"
+  },
+  "keywords": [
+    "fuel",
+    "docs",
+    "documentation"
+  ],
+  "author": "Nick Dodson <nick.dodson@fuel.sh>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/FuelLabs/docs/issues"
+  },
+  "homepage": "https://github.com/FuelLabs/docs#readme",
+  "dependencies": {
+    "fs-extra": "^9.0.1",
+    "recursive-readdir": "^2.2.2",
+    "showdown": "^1.9.1"
+  }
+}

@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>%%title%%</title>
+  </head>
+
+  <body>
+
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+    <script type="text/javascript">
+
+      hljs.initHighlightingOnLoad();
+
+      const files = %%files%%;
+
+      function search(pattern) {
+        for (file of files) {
+          window.axios.get('/' + file + '.md')
+          .then(function (response) {
+
+            const fuse = new Fuse([{
+              title: response.config.url,
+              content: response.data,
+            }], {
+              keys: [
+                "title",
+                "content",
+              ],
+            });
+
+            // handle success
+            console.log(fuse.search(pattern));
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error);
+          });
+        }
+      }
+
+      // search('nick');
+    </script>
+
+    <div id="panel">%%panel%%</div>
+    <div id="content">%%content%%</div>
+    <div id="search"></div>
+
+  <body>
+</html>
