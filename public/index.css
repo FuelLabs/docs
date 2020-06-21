@@ -275,14 +275,20 @@ body {
     padding: 40px;
   }
 
-  #panel {
+  #panel-wrapper {
     display: none;
     min-width: 85vw;
+    border-right: none;
+    margin-left: 0px;
+    padding-right: 40px;
+  }
+
+  #panel {
+    min-width: 100%;
     margin-top: 20px;
     padding-left: 40px;
     padding-right: 40px;
     margin-left: 0px;
-    border-right: none;
   }
 
   .panel-open {
@@ -294,7 +300,7 @@ body {
     padding-top: 0px;
     padding-left: 40px;
     padding-right: 40px;
-    width: 100vw;
+    width: 80vw;
   }
 
   #nav img {
