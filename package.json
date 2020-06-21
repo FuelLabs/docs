@@ -4,7 +4,7 @@
   "description": "The Fuel documentation.",
   "main": "config/build.js",
   "scripts": {
-    "start": "parcel dist/index.html",
+    "start": "parcel public/index.html --out-dir build ",
     "build": "parcel build public/index.html --out-dir build && node config/build",
     "publish": "npm run build && now dist",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,8 +25,15 @@
   },
   "homepage": "https://github.com/FuelLabs/docs#readme",
   "dependencies": {
+    "copy-text-to-clipboard": "^2.2.0",
     "fs-extra": "^9.0.1",
     "markdown-to-txt": "^1.0.1",
-    "showdown": "^1.9.1"
+    "hyperapp": "^2.0.4",
+    "hyperapp-styled-components": "^0.1.2",
+    "showdown": "^1.9.1",
+    "regenerator-runtime": "^0.13.5"
+  },
+  "devDependencies": {
+    "cssnano": "^4.1.10"
   }
 }
