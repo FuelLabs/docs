@@ -73,12 +73,18 @@ function search(pattern) {
 
       const result = fuse.search(pattern);
 
+      const clean = v => v.split('__').join(': ').split('_').join(' ');
+
       if (result.length) {
         result.map(({ item }) => {
           const itemHTML = `
             <div class="search-item">
               <h3><a href="${item.title.replace('.md', '')}">
-                ${item.title.replace('.md', '').replace('.html', '').split('___').slice(-1)}
+                ${clean(item.title
+                  .replace('.md', '')
+                  .replace('.html', '')
+                  .split('___')
+                  .slice(-1)[0])}
               </a></h3>
               <p>${item.content.slice(0, 500)}...</p>
             </div>
