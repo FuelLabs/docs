@@ -46,9 +46,11 @@ const treeToPanel2 = (_tree, state = {}) => _tree
             (state.open.indexOf(v.dir) !== -1 ? 'group-open' : '')
           )}>{treeToPanel2(v.children, state)}</div>
         </div>)
-      : (<a class={'link ' + (
+      : (<a
+          id={title(v.name)}
+          class={'link ' + (
           state.pathname.indexOf(normalize(v.path)) !== -1 ? 'link-open' : ''
-        )} href={normalize(v.path)}>{title(v.name)}</a>));
+        )} href={normalize(v.path) + '#' + title(v.name)}>{title(v.name)}</a>));
 
 const filterVersion = (_tree, version = 'v1.0.0') => _tree.filter(v => v.name === version)[0].children;
 
@@ -109,10 +111,15 @@ const view = state => (
   </div>
 );
 
+const start = window.location.pathname === '/'
+  ? '__v1.0.0___Introduction___Welcome.html'
+  : window.location.pathname;
+
 app({
   init: {
-    open: window.location.pathname,
-    pathname: window.location.pathname,
+    started: false,
+    open: start,
+    pathname: start,
   },
   view,
   subscriptions: state => [],

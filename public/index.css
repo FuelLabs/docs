@@ -68,12 +68,18 @@ body {
   flex: 1;
 }
 
-#panel {
+#panel-wrapper {
   min-width: 300px;
-  margin-left: 75px;
-  border-right: 1px solid #F1F1F1;
   margin-right: 160px;
-  height: 100%;
+  overflow: hidden;
+  overflow: scroll;
+  height: 80vh;
+  border-right: 1px solid #F1F1F1;
+}
+
+#panel {
+  margin-left: 75px;
+  min-width: 300px;
   margin-top: 40px;
   z-index: 1000;
 }
@@ -240,6 +246,7 @@ body {
   text-decoration: none !important;
   border-top: 1px solid #F1F1F1;
   width: 100%;
+  margin-top: 40px;
 }
 
 #next:hover {
