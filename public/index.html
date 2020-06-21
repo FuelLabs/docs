@@ -37,7 +37,6 @@
         });
         */
 
-        /*
         document.body.onclick = function(e) {   //when the document body is clicked
           let _orig = e;
 
@@ -48,12 +47,13 @@
             e = e.target;                   //assign the element clicked to e
           }
 
-          if (e.className && e.className.indexOf('group-header') != -1) {
+          if (_orig.target.tagName === 'H1' || _orig.target.tagName === 'H2') {
             //if the element has a class name, and that is 'someclass' then...
-            toggle(_orig);
+            // toggle(_orig);
+
+            location.href = '#' + _orig.target.id;
           }
         };
-        */
 
         document
           .getElementById('toggle')
@@ -80,12 +80,14 @@
 
       <div id="docs">
         <div id="panel"></div>
-        <div id="content">
-          <a id="edit" href="https://github.com/FuelLabs/docs/blob/master/src%%file%%">
-            <i>edit on Github</i>
-          </a>
-          %%content%%
-          <a id="next" href="%%next%%"><i>%%nextTitle%% &gt;</i></a>
+        <div id="content-wrapper">
+          <div id="content">
+            <a id="edit" href="https://github.com/FuelLabs/docs/blob/master/src%%file%%">
+              <i>edit</i>
+            </a>
+            %%content%%
+            <a id="next" href="%%next%%"><i>%%nextTitle%% &gt;</i></a>
+          </div>
         </div>
       </div>
     </div>

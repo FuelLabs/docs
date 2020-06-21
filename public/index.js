@@ -43,8 +43,7 @@ const treeToPanel2 = (_tree, state = {}) => _tree
       ? (<div id={v.dir} class="group">
           <h2 class="group-header" onclick={state => ({ ...state, open: v.dir })}>{title(v.name)}</h2>
           <div class={'group-children ' + (
-            (state.pathname.indexOf(v.dir) !== -1
-              || state.open.indexOf(v.dir) !== -1 ? 'group-open' : '')
+            (state.open.indexOf(v.dir) !== -1 ? 'group-open' : '')
           )}>{treeToPanel2(v.children, state)}</div>
         </div>)
       : (<a class={'link ' + (
@@ -54,7 +53,7 @@ const treeToPanel2 = (_tree, state = {}) => _tree
 const filterVersion = (_tree, version = 'v1.0.0') => _tree.filter(v => v.name === version)[0].children;
 
 function search(pattern) {
-  document.getElementById('content').innerHTML = '';
+  document.getElementById('content').innerHTML = '<h1>Search Results</h1>';
 
   for (const file of window.files.map(normalize)) {
     window.axios.get('/' + file + '.md')
@@ -75,7 +74,7 @@ function search(pattern) {
       if (result.length) {
         result.map(({ item }) => {
           const itemHTML = `
-            <div>
+            <div class="search-item">
               <h3><a href="${item.title.replace('.md', '')}">
                 ${item.title.replace('.md', '').replace('.html', '').split('___').slice(-1)}
               </a></h3>
@@ -112,7 +111,7 @@ const view = state => (
 
 app({
   init: {
-    open: '',
+    open: window.location.pathname,
     pathname: window.location.pathname,
   },
   view,

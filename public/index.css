@@ -1,7 +1,7 @@
 body {
   font-family: 'Poppins', sans-serif;
-  font-size: 17px;
-  font-weight: 400;
+  font-size: 15px;
+  font-weight: 300;
   color: #26282A;
 }
 
@@ -10,7 +10,7 @@ body {
 }
 
 .group h2 {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 600;
   color: #69737D;
   margin-bottom: 20px;
@@ -27,10 +27,23 @@ body {
 .group-children a {
   color: #69737D;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 15px;
   margin-bottom: 20px;
   font-weight: 400;
   cursor: pointer;
+}
+
+.group-children .group-children {
+  margin-bottom: 0px;
+}
+
+.group-children .group {
+  margin-bottom: 0px;
+}
+
+.group-children .group-header {
+  margin-top: 0px;
+  margin-bottom: 20px;
 }
 
 .group-open {
@@ -46,6 +59,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow: hidden;
 }
 
 #docs {
@@ -55,12 +69,13 @@ body {
 }
 
 #panel {
-  min-width: 335px;
+  min-width: 300px;
   margin-left: 75px;
   border-right: 1px solid #F1F1F1;
-  margin-right: 80px;
+  margin-right: 160px;
   height: 100%;
   margin-top: 40px;
+  z-index: 1000;
 }
 
 #panel-header {
@@ -82,6 +97,12 @@ body {
   outline: none;
 }
 
+#content-wrapper {
+  flex: 1;
+  overflow: scroll;
+  height: 80vh;
+}
+
 #content {
   flex: 1;
   padding-top: 60px;
@@ -90,7 +111,49 @@ body {
 }
 
 #content h1 {
+  font-weight: 600;
   margin-bottom: 40px;
+  position: relative;
+  z-index: 100000;
+  padding-left: 30px;
+  margin-left: -30px;
+  overflow: visible;
+  cursor: pointer;
+}
+
+#content h2 {
+  font-weight: 600;
+  margin-top: 40px;
+  padding-bottom: 0px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #F1F1F1;
+  cursor: pointer;
+}
+
+.search-header {
+}
+
+.search-item {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #F1F1F1;
+}
+
+#content {
+  line-height: 1.7;
+}
+
+#content p {
+  line-height: 1.7;
+}
+
+#content a {
+  text-decoration: none;
+  font-weight: 400;
+}
+
+#content a:hover {
+  text-decoration: underline;
 }
 
 #content table {
@@ -124,7 +187,7 @@ body {
 #nav a {
   margin-left: 40px;
   color: #D4DEE5;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 300;
   text-decoration: none;
 }
@@ -142,7 +205,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: 20px;
+  font-size: 17px;
   color: #26282A;
   font-weight: 600;
   text-decoration: none !important;
@@ -159,19 +222,28 @@ body {
   top: 60px;
   right: 160px;
   font-weight: 200;
-  font-size: 20px;
+  font-size: 17px;
   color: #D4DEE5 !important;
   text-decoration: none !important;
 }
 
+#edit:hover {
+  text-decoration: underline !important;
+}
+
 #next {
-  position: absolute;
-  bottom: 60px;
-  right: 160px;
+  text-align: right;
+  display: inline-block;
   font-weight: 200;
   font-size: 20px;
   color: #48BC86 !important;
   text-decoration: none !important;
+  border-top: 1px solid #F1F1F1;
+  width: 100%;
+}
+
+#next:hover {
+  text-decoration: underline !important;
 }
 
 #nav img {
