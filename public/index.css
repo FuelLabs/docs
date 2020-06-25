@@ -3,6 +3,7 @@ body {
   font-size: 15px;
   font-weight: 300;
   color: #26282A;
+  padding-top: 85px;
 }
 
 .group {
@@ -18,13 +19,16 @@ body {
 }
 
 pre {
+  display: inline-block;
   border-radius: 6px;
+  margin: 0px!important;
+  width: 100%!important;
 }
 
 code {
   border-radius: 6px;
-  padding: 25px !important;
-  background: #F1F1F1 !important;
+  padding: 20px!important;
+  background: #F1F1F1!important;
 }
 
 .group-children {
@@ -66,10 +70,6 @@ code {
 }
 
 #container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
 }
 
 #docs {
@@ -79,11 +79,13 @@ code {
 }
 
 #panel-wrapper {
+  position: fixed;
+  left: 0px;
+  top: 65px;
+  bottom: 0px;
   min-width: 270px;
-  margin-right: 160px;
   overflow: hidden;
   overflow: scroll;
-  height: 90vh;
   border-right: 1px solid #F1F1F1;
 }
 
@@ -110,23 +112,32 @@ code {
 #search {
   border: none;
   margin-bottom: 20px;
+  padding-left: 0px;
   outline: none;
 }
 
 #content-wrapper {
-  flex: 1;
-  overflow: scroll;
-  height: 90vh;
+  z-index: 10000;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100vw;
+  margin-left: 300px;
+  margin-top: -13px;
 }
 
 #content {
-  flex: 1;
-  padding-top: 60px;
-  padding-right: 160px;
-  position: relative;
+  width: 65vw;
+  line-height: 1.7;
+}
+
+#content b {
+  display: inline-block;
+  font-weight: 700;
 }
 
 #content h1 {
+  display: inline-block;
   font-weight: 600;
   margin-bottom: 40px;
   position: relative;
@@ -146,17 +157,10 @@ code {
   cursor: pointer;
 }
 
-.search-header {
-}
-
 .search-item {
   margin-bottom: 40px;
   padding-bottom: 40px;
   border-bottom: 1px solid #F1F1F1;
-}
-
-#content {
-  line-height: 1.7;
 }
 
 #content p {
@@ -186,14 +190,20 @@ code {
 }
 
 #header {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-left: 80px;
-  padding-right: 80px;
-  height: 120px;
+  padding-left: 100px;
+  padding-right: 100px;
+  height: 65px;
   border-bottom: 1px solid #F1F1F1;
+  background: #FFF;
+  z-index: 100000;
 }
 
 #nav {
@@ -230,15 +240,15 @@ code {
 }
 
 #logo img {
-  max-width: 40px;
+  max-width: 25px;
   height: auto;
   margin-right: 10px;
 }
 
 #edit {
   position: absolute;
-  top: 60px;
-  right: 160px;
+  top: 100px;
+  right: 100px;
   font-weight: 200;
   font-size: 17px;
   color: #D4DEE5 !important;
@@ -259,6 +269,7 @@ code {
   border-top: 1px solid #F1F1F1;
   width: 100%;
   margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 #next:hover {
@@ -282,21 +293,23 @@ code {
   }
 
   #panel-wrapper {
-    margin-right: 30px;
   }
 
-  #content {
-    padding-right: 30px;
+  #content-wrapper {
+    margin-left: 300px;
   }
 }
 
 @media only screen and (max-width: 812px) {
   #header {
-    padding: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   #panel-wrapper {
     display: none;
+    right: 0px;
+    margin-top: 20px;
     min-width: 85vw;
     border-right: none;
     margin-left: 0px;
@@ -306,7 +319,7 @@ code {
   #panel {
     min-width: 100%;
     margin-top: 20px;
-    padding-left: 40px;
+    padding-left: 20px;
     padding-right: 40px;
     margin-left: 0px;
   }
@@ -315,12 +328,16 @@ code {
     display: block!important;
   }
 
+  .panel-closed {
+    display: none!important;
+  }
+
   #content {
-    margin-top: 0px;
-    padding-top: 0px;
-    padding-left: 40px;
-    padding-right: 40px;
-    width: 80vw;
+    width: 90vw;
+  }
+
+  #content-wrapper {
+    margin-left: 0px;
   }
 
   #nav img {

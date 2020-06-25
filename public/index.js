@@ -52,6 +52,27 @@ const treeToPanel2 = (_tree, state = {}) => _tree
           state.pathname.indexOf(normalize(v.path)) !== -1 ? 'link-open' : ''
         )} href={normalize(v.path) + '#' + title(v.name)}>{title(v.name)}</a>));
 
+
+/*
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/xcode.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+
+hljs.initHighlightingOnLoad();
+
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/tomorrow-night.min.css">
+
+document
+  .getElementById('search')
+  .addEventListener("keyup", event => {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+      search(event.target.value);
+    }
+});
+*/
+
 const filterVersion = (_tree, version = 'v1.0.0') => _tree.filter(v => v.name === version)[0].children;
 
 function search(pattern) {

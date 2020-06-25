@@ -3,7 +3,7 @@
     <meta name=”apple-mobile-web-app-capable” content=”yes”>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
-    <title>%%title%%</title>
+    <title>Fuel | Docs - %%title%%</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./index.css">
 
@@ -14,8 +14,11 @@
 
     <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/xcode.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
 
@@ -27,20 +30,6 @@
       window.files = '%%files%%';
 
       window.addEventListener('load', () => {
-        /*
-        <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/tomorrow-night.min.css">
-
-        document
-          .getElementById('search')
-          .addEventListener("keyup", event => {
-            event.preventDefault();
-            if (event.keyCode === 13) {
-              search(event.target.value);
-            }
-        });
-        */
-
         document.body.onclick = function(e) {   //when the document body is clicked
           let _orig = e;
 
@@ -63,6 +52,7 @@
           .getElementById('toggle')
           .addEventListener("click", event => {
             document.getElementById('panel-wrapper').classList.toggle("panel-open");
+            document.getElementById('content').classList.toggle("panel-closed");
           });
       });
     </script>
@@ -82,8 +72,9 @@
         </div>
       </div>
 
+      <div id="panel-wrapper"><div id="panel"></div></div>
+
       <div id="docs">
-        <div id="panel-wrapper"><div id="panel"></div></div>
         <div id="content-wrapper">
           <div id="content">
             <a id="edit" href="https://github.com/FuelLabs/docs/blob/master/src%%file%%">
