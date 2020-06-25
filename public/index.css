@@ -1,6 +1,6 @@
 body {
   font-family: 'Poppins', sans-serif;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 300;
   color: #26282A;
   padding-top: 85px;
@@ -27,6 +27,7 @@ pre {
 
 code {
   border-radius: 6px;
+  font-size: 13px!important;
   padding: 20px!important;
   background: #F1F1F1!important;
 }
@@ -81,7 +82,7 @@ code {
 #panel-wrapper {
   position: fixed;
   left: 0px;
-  top: 65px;
+  top: 60px;
   bottom: 0px;
   min-width: 270px;
   overflow: hidden;
@@ -200,10 +201,11 @@ code {
   align-items: center;
   padding-left: 100px;
   padding-right: 100px;
-  height: 65px;
-  border-bottom: 1px solid #F1F1F1;
-  background: #FFF;
+  height: 60px;
   z-index: 100000;
+  transition: background-color 0.1s ease-in;
+  background: #FFF;
+  border-bottom: 1px solid #F1F1F1;
 }
 
 #nav {
@@ -250,7 +252,7 @@ code {
   top: 100px;
   right: 100px;
   font-weight: 200;
-  font-size: 17px;
+  font-size: 15px;
   color: #D4DEE5 !important;
   text-decoration: none !important;
 }
@@ -263,7 +265,7 @@ code {
   text-align: right;
   display: inline-block;
   font-weight: 200;
-  font-size: 20px;
+  font-size: 15px;
   color: #48BC86 !important;
   text-decoration: none !important;
   border-top: 1px solid #F1F1F1;

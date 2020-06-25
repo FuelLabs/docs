@@ -6,7 +6,7 @@
   "scripts": {
     "start": "http-server dist",
     "build": "parcel build public/index.html --out-dir build && node config/build",
-    "publish": "npm run build && now dist",
+    "publish": "npm run build && now dist && now alias https://dist.fuellabs.now.sh docs.fuel.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
