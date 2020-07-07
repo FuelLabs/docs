@@ -12,7 +12,7 @@ Blocks
 | `numTokens`           | `uint256`   | 32   | Maximum token ID used through this block.           |
 | `numAddresses`        | `uint256`   | 32   | Maximum address ID used through this block          |
 | `roots.length`        | `uint16`    | 2    | Number of transaction roots.                        |
-| `roots`               | `bytes32[]` | 32*  | List of roots.                                      |
+| `roots`               | `bytes32[]` | 32*  | List of root header hashes.                         |
 
 ## Number of Tokens
 
@@ -32,6 +32,6 @@ See: [address registry](./Addresses.md).
 
 ## Roots
 
-The block header includes a list of roots, `roots`. Each individual root is the hash of a [RootHeader](./Roots.md), which commits to a list of transactions and other important metadata. For more information of why multiple roots are used instead of the more traditional single-transactions-root, see [Block Architecture](../0.%20Fundamentals/3.%20Block%20Architecture.md).
+The block header includes a list of root header hashes, `roots`. Each individual root header hash is the hash of a [root header](./Roots.md), which commits to a list of transactions and other important metadata. For more information of why multiple roots are used instead of the more traditional single-transactions-root, see [Block Architecture](../0.%20Fundamentals/3.%20Block%20Architecture.md).
 
-The number of roots is upper-bounded by the `TRANSACTION_ROOTS_MAX` parameter (`128`).
+The number of root header hashes is upper-bounded by the `TRANSACTION_ROOTS_MAX` parameter (`128`).
