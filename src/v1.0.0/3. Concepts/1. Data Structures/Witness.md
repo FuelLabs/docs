@@ -22,7 +22,7 @@ Witnesses come in different types, depending on the origin of the authorization.
 | `s`    | `bytes32`      | 32   | Signature `s` value. |
 | `v`    | `uint8`        | 1    | Signature `v` value. |
 
-This is a normal signature that signs over the transaction ID to authorize.
+This is a normal signature that signs over the [transaction ID](./Transactions.md) to authorize.
 
 See: [EIP-155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md).
 
