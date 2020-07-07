@@ -41,12 +41,12 @@ A simple transfer between two users on Fuel or a withdrawal from Fuel back to Et
 | `amount`             | `uint8[]`    | 1*   | Amount of tokens. See: [serialization](../0.%20Fundamentals/5.%20Serialization.md).                                            |
 | `owner.length`       | `uint8`      | 1    | Next field number of bytes.                                                                                                    |
 | `owner`              | `bytes1[]`   | 1*   | Either address ID (`<= 19` bytes) or address (`= 20` bytes) of recipient. See: [address registry](./Addresses.md).             |
-| `digest`             | `bytes32`    | 32   |                                                                                                                                |
-| `expiry`             | `uint32`     | 4    |                                                                                                                                |
+| `digest`             | `bytes32`    | 32   | Hashlock digest. The preimage to this digest must be revealed to spend this output.                                            |
+| `expiry`             | `uint32`     | 4    | Timelock as an Ethereum block number.                                                                                          |
 | `returnOwner.length` | `uint8`      | 1    | Next field number of bytes.                                                                                                    |
 | `returnOwner`        | `bytes1[]`   | 1*   | Either address ID (`<= 19` bytes) or address (`= 20` bytes) of owner if HTLC expires. See: [address registry](./Addresses.md). |
 
-TODO define exactly how the HTLC expiry is counted (prevent off-by-one)
+The timelock expiry is an _absolute_ Ethereum block number. Any rollup block committed _at or after_ this Ethereum block number can spend the UTXO with the timelock condition.
 
 See also: [HTLC explainer on Bitcoin Wiki](https://en.bitcoin.it/wiki/Hash_Time_Locked_Contracts).
 
