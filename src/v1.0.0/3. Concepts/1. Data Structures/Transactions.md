@@ -42,3 +42,5 @@ The minimum transaction leaf size in bytes is set by the parameter `TRANSACTION_
 The maximum transaction leaf size in bytes is set by the parameter `TRANSACTION_SIZE_MAX` (`896`).
 The maximum number of inputs in a single transaction is `INPUTS_MAX` (`8`).
 The maximum number of outputs in a single transaction is `OUTPUTS_MAX` (`8`).
+
+TODO how are lists encoded?
