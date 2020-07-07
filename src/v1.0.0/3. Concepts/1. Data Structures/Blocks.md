@@ -14,6 +14,24 @@ Blocks
 | `roots.length`        | `uint16`    | 2    | Number of transaction roots.                                                       |
 | `roots`               | `bytes32[]` | 32*  | List of transaction roots. Each root is the Merkle root of a list of transactions. |
 
-The block header commits to a list of transactions as `roots`. Each individual root is the hash of a [RootHeader](Roots.md)
+## Number of Tokens
 
-TRANSACTION_ROOTS_MAX := 128
+Tokens IDs are registered contract-side to allow for more compact transactions. The maximum token ID used in this block and all previous blocks is included in the block header.
+
+This is needed to prevent a griefing attack where a fraudulent rollup block is committed that spends a token ID that is not yet registered. The fraud proof can then be front-run with a transaction that registers the token ID, thereby invalidating the fraud proof.
+
+See: [token registry](./Tokens.md).
+
+## Number of Addresses
+
+Address IDs are registered contract-side to allow for more compact transactions. The maximum address ID used in this block and all previous blocks is included in the block header.
+
+This is needed to prevent a griefing attack where a fraudulent rollup block is committed that sends to an address ID that is not yet registered. The fraud proof can then be front-run with a transaction that registers the address ID, thereby invalidating the fraud proof.
+
+See: [address registry](./Addresses.md).
+
+## Roots
+
+The block header includes a list of roots, `roots`. Each individual root is the hash of a [RootHeader](./Roots.md), which commits to a list of transactions and other important metadata. For more information of why multiple roots are used instead of the more traditional single-transactions-root, see [Block Architecture](../0.%20Fundamentals/3.%20Block%20Architecture.md).
+
+The number of roots is upper-bounded by the `TRANSACTION_ROOTS_MAX` parameter (`128`).
