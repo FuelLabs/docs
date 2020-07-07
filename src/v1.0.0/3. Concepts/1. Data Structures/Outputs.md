@@ -1,10 +1,12 @@
 Outputs
 ===
 
+Outputs define which state elements (usually: UTXOs) are produced by a [transaction](./Transactions.md). Each state element can be produced and consumed at most once.
+
 # OutputTypes
 
 ```
-enum OutputTypes : uint8 {
+enum OutputType : uint8 {
     Transfer = 0,
     Withdraw = 1,
     HTLC = 2,
@@ -41,6 +43,8 @@ enum OutputTypes : uint8 {
 | `expiry`             | `uint32`      | 4    |             |
 | `returnOwner.length` | `uint8`       | 1    |             |
 | `returnOwner`        | `bytes1[]`    | 1*   |             |
+
+https://en.bitcoin.it/wiki/Hash_Time_Locked_Contracts
 
 # OutputReturn
 
