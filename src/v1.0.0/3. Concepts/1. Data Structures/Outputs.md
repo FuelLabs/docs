@@ -52,11 +52,11 @@ See also: [HTLC explainer on Bitcoin Wiki](https://en.bitcoin.it/wiki/Hash_Time_
 
 # OutputReturn
 
-| name          | type         | size | description                 |
-| ------------- | ------------ | ---- | --------------------------- |
-| `type`        | `OutputType` | 1    | `OutputType.Return`.        |
-| `data.length` | `uint16`     | 2    | Next field number of bytes. |
-| `data`        | `bytes1[]`   | 1*   |                             |
+| name          | type         | size | description                                        |
+| ------------- | ------------ | ---- | -------------------------------------------------- |
+| `type`        | `OutputType` | 1    | `OutputType.Return`.                               |
+| `data.length` | `uint16`     | 2    | Next field number of bytes.                        |
+| `data`        | `bytes1[]`   | 1*   | Data blob. Between `1` and `512` bytes, inclusive. |
 
 Return outputs are provably prunable, i.e. they are not inserted into the state (the UTXO set). They can be used to record and timestamp arbitrary information to the Fuel chain, useful for building applications with client-side execution.
 
