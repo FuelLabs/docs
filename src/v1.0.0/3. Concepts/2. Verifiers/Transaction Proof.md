@@ -3,6 +3,10 @@ Verifier: Transaction Proofs
 
 Validates a transaction proof is properly formatted.
 
+1. The header of the transaction proof [must be valid](./Block%20Header.md).
+1. The Merkle proof of the transaction proof [must be valid](./Merkle%20Proof.md).
+1. The length of the transaction leaf `transaction.length` must be greater than `0`.
+
 # TransactionProof
 
 | name                 | type                                                           | size     | description                                                  |
