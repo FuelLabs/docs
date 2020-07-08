@@ -11,6 +11,8 @@ Verifies the [block header](./Block%20Header.md) component of a [transaction pro
     1. The current block number must be at least the block number `ethereumBlockNumber`.
 1. If checking for not-finalizable block, then:
     1. The current block number must be less than the block number `ethereumBlockNumber`.
-1. If transaction root header `rootHeader` is not `0` (i.e. if a root header is present), then:
-    1. The root index `proof.rootIndex` must be less than the number of roots `roots.length`.
-    1. The hash of the root header `rootHeader` must match the root header at index `proof.rootIndex`.
+
+Additional checks must pass if the [root header](./../1.%20Data%20Structures/Roots.md) component of a transaction proof is also being verified at the same time.
+
+1. The root index `proof.rootIndex` must be less than the number of roots `roots.length`.
+1. The hash of the root header `rootHeader` must match the root header at index `proof.rootIndex`.
