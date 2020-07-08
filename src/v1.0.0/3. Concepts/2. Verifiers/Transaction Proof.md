@@ -1,6 +1,8 @@
 Verifier: Transaction Proofs
 ===
 
+Validates a transaction proof is properly formatted.
+
 # TransactionProof
 
 | name                 | type                                                           | size     | description                                    |

@@ -1,7 +1,7 @@
 Verifier: Data
 ===
 
-Verifies the [data](./../1.%20Data%20Structures/Transactions.md) component of a [transaction proof](./Transaction%20Proof.md) is properly formatted.
+Validates the [data](./../1.%20Data%20Structures/Transactions.md) component of a [transaction proof](./Transaction%20Proof.md) is properly formatted.
 
 The data field in an [unsigned transaction](./../1.%20Data%20Structures/Transactions.md) is a list of the unique state elements that are being consumed by the inputs. Since the key for these state elements commits to sufficient information to verify their values, we simply need to provide the preimage to each hash.
 
