@@ -17,5 +17,9 @@ Validates a transaction proof is properly formatted.
 | `transactionIndex`   | `uint16`                                                       | 2        | Transaction index.                             |
 | `transaction.length` | `uint16`                                                       | 2        | Length of transaction leaf, in bytes.          |
 | `transaction`        | [TransactionLeaf](./../1.%20Data%20Structures/Transactions.md) | variable | Transaction leaf substructure.                 |
+| `data.length `       | `uint8`                                                        | 1        | Next field number of elements.                 |
+| `data`               | `bytes32[]`                                                    | 32*      | List of state elements being spent.            |
+| `signatureFeeToken`  | `uint256`                                                      | 32       | Implicit [fee token ID](./Roots.md).           |
+| `signatureFee`       | `uint256`                                                      | 32       | Implicit [fee rate](./Roots.md).               |
 | `token`              | `address`                                                      | 20       | TODO                                           |
 | `selector`           | `address`                                                      | 20       | TODO                                           |
