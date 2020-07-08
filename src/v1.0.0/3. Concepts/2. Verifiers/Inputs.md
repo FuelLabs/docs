@@ -5,7 +5,7 @@ Validates the [inputs](../2.%20Verifiers/Inputs.md) component of a [transaction 
 
 One additional proof per input in the primary transaction proof `proof` must be provided, the list `inputProofs`.
 
-For each input in `proof.transactionLeaf.inputs` and `inputProof` in `inputProofs`, indexed by `index`:
+For each input in `proof.transaction.inputs` and `inputProof` in `inputProofs`, indexed by `index`:
 1. If input's [type](../1.%20Data%20Structures/Inputs.md) is `Transfer` or `HTLC`:
    1. The transaction proof `inputProof` must be [validated](./Transaction%20Proof.md).
    1. The output metadata of `inputProof` must match the metadata of input (i.e. they must be pointing to the same entry in the ledger).

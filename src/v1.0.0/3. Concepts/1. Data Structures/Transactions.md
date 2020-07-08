@@ -20,6 +20,8 @@ Transaction data that is signed off-chain. The unsigned transaction data is [ser
 
 Implicit data (`data`) is one 32-byte hash _per input_, and uniquely identifies what is being spent by that input (a [UTXO ID](./Outputs.md) or a [deposit ID](./Deposits.md)).
 
+TODO how is the transaction ID computed? EIP-712?
+
 TODO how is this specifically serialized and packed?
 
 # TransactionLeaf
