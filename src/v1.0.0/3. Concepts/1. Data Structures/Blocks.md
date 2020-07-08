@@ -35,3 +35,13 @@ See: [address registry](./Addresses.md).
 The block header includes a list of root header hashes, `roots`. Each individual root header hash is the hash of a [root header](./Roots.md), which commits to a list of transactions and other important metadata. For more information of why multiple roots are used instead of the more traditional single-transactions-root, see [Block Architecture](../0.%20Fundamentals/3.%20Block%20Architecture.md).
 
 The number of root header hashes is upper-bounded by the `TRANSACTION_ROOTS_MAX` parameter (`128`).
+
+# Committing a New Block Header
+
+When a new block header is produced and committed to Ethereum, the following checks **must** pass, and are enforced by the smart contract.
+
+1. The height `blockHeight` must be greater than `0` and at most the tip height.
+1. The previous block hash `previousBlockHash` must match the previous block hash at `blockHeight`.
+1. The number of transaction roots `roots.length` must be greater than `0` and at most [`TRANSACTION_ROOTS_MAX`].
+1. Every root in `roots` must exist in the root registry.
+1. TODO describe penalty mode
