@@ -14,7 +14,7 @@ Note that all metadata objects are exactly `8` bytes.
 | `transactionIndex` | `uint16` | 2    | Transaction index in root.   |
 | `outputIndex`      | `uint8`  | 1    | Output index in transaction. |
 
-Metadata uniquely identifies an exact [output](./Outputs.md) in the ledger, first by the [block height](./Blocks.md), then the [root](./Roots.md), [transaction index](./Roots.md), and finally [output index](./Transactions.md). Essentially, metadata "references" an exact output. This allows for both compact fraud proofs without serializing the state, leveraging the property that UTXOs are produced and consumed at most once, and smaller transaction payloads than using UTXO IDs directly (generally a 32-byte hash).
+Metadata uniquely identifies an exact [output](./Outputs.md) in the ledger, first by the [block height](./Blocks.md), then the [root](./Roots.md), [transaction index](./Roots.md), and finally [output index](./Transactions.md). Essentially, metadata "references" an exact output. This allows for both compact fraud proofs without serializing the state, leveraging the property that UTXOs are produced and consumed at most once, and smaller transaction payloads than using [UTXO IDs](./Outputs.md) directly (a 32-byte hash).
 
 # MetadataDeposit
 
