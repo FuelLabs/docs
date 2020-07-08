@@ -3,14 +3,14 @@ Roots
 
 # RootHeader
 
-| name             | type      | size | description                                  |
-| ---------------- | --------- | ---- | -------------------------------------------- |
-| `rootProducer`   | `address` | 20   | Address of root producer.                    |
-| `merkleTreeRoot` | `bytes32` | 32   | Claimed Merkle root of list of transactions. |
-| `commitmentHash` | `bytes32` | 32   | Simple hash of list of transactions.         |
-| `rootLength`     | `uint256` | 32   | Length of list of transactions, in bytes.    |
-| `feeToken`       | `uint256` | 32   | Token ID of all fees paid in this root.      |
-| `fee`            | `uint256` | 32   | Feerate of all fees paid in this root.       |
+| name             | type      | size | description                                                       |
+| ---------------- | --------- | ---- | ----------------------------------------------------------------- |
+| `rootProducer`   | `address` | 20   | Address of root producer.                                         |
+| `merkleTreeRoot` | `bytes32` | 32   | Claimed Merkle root of list of [transactions](./Transactions.md). |
+| `commitmentHash` | `bytes32` | 32   | Simple hash of list of [transactions](./Transactions.md).         |
+| `rootLength`     | `uint256` | 32   | Number of roots.                                                  |
+| `feeToken`       | `uint256` | 32   | [Token ID](./Tokens.md) of all fees paid in this root.            |
+| `fee`            | `uint256` | 32   | Feerate of all fees paid in this root.                            |
 
 Each _root header_ commits to a list of transactions. Each _root_ is a root header and a list of transactions (and does not exist as a canonical data structure).  [Blocks](./Blocks.md) contain one or more root header hashes (i.e. hashes of root headers), and so implicitly commit to a list of transactions. For more information of why multiple roots are used instead of the more traditional single-transactions-root, see [Block Architecture](../0.%20Fundamentals/3.%20Block%20Architecture.md).
 
