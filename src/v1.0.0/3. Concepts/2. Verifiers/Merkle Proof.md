@@ -9,4 +9,4 @@ Verifier: Merkle Proofs
     1. Hash the current hash with its sibling from the Merkle proof. If the `i`th bit of `proof.transactionIndex` is `0`, the sibling is on the right. If it's `1`, the sibling is on the left.
 1. The resultant Merkle root must match `proof.rootHeader.merkleTreeRoot`.
 
-Note: when constructing the tree, the number of leaves may not be a power of 2. In such a case, `EMPTY_LEAF_HASH` (`0x0000000000000000000000000000000000000000000000000000000000000000`) is used as the leaf value to pad the leaves until the smallest enclosing power of 2.
+Note: when constructing the tree, the number of nodes at a given level may not be even. In such case, the default value `EMPTY_LEAF_HASH` (`0x0000000000000000000000000000000000000000000000000000000000000000`) is used as the sibling hash value.
