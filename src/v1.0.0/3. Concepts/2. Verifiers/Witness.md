@@ -7,7 +7,7 @@ This is needed to ensure that the preimage to the transaction ID provided in the
 
 For the provided preimage `preimage`, `witness = proof.transaction.witnesses[0]`, and `input = proof.transaction.inputs[0]`:
 1. If `witness`'s type is `Signature`:
-    1. Recover the address with signature `witness` and the transaction ID of computed from `proof.transaction` and `proof.data` as message.
+    1. Recover the address with signature `witness` and the transaction ID of computed from `proof.transaction` and `proof.data[0]` as message.
     1. If `input`'s [type](../1.%20Data%20Structures/Inputs.md) is `Transfer` or `HTLC`:
         1. The recovered address must match `preimage.owner`.
     1. If `input`'s [type](../1.%20Data%20Structures/Inputs.md) is `Deposit`:
@@ -15,8 +15,8 @@ For the provided preimage `preimage`, `witness = proof.transaction.witnesses[0]`
     1. If `input`'s [type](../1.%20Data%20Structures/Inputs.md) is `Root`:
         1. The recovered address must match `proof.blockProducer`.
 1. If `witness`'s type is `Caller`:
-    1. The [witness registered](../1.%20Data%20Structures/Witness.md) indexed by `preimage.owner` and `preimage.blockNumber` must match the transaction ID of computed from `proof.transaction` and `proof.data`
+    1. The [witness registered](../1.%20Data%20Structures/Witness.md) indexed by `preimage.owner` and `preimage.blockNumber` must match the transaction ID of computed from `proof.transaction` and `proof.data[0]`
 1. If `witness`'s type is `Producer`:
-    1. The `preimage.hash` must match the transaction ID of computed from `proof.transaction` and `proof.data`.
+    1. The `preimage.hash` must match the transaction ID of computed from `proof.transaction` and `proof.data[0]`.
 
 Note that `preimage` can come in [different types](./Inputs.md), depending on the type of the input (i.e. what is being spent).
