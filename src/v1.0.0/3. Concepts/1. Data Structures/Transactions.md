@@ -13,14 +13,13 @@ Transactions consume [inputs](./Inputs.md) and produce [outputs](./Outputs.md).
 | `outputs`           | `bytes1[]`  | 1*   | List of [outputs](./Outputs.md).             |
 | `data.length`       | `uint8`     | 1    | Next field number of elements.               |
 | `data`              | `bytes32[]` | 32*  | Implicit unique identifier of what to spend. |
-| `signatureFeeToken` | `uint256`   | 32   | Implicit [fee token ID](./Roots.md).         |
+| `signatureFeeToken` | `uint256`   | 32   | Implicit 4-byte [fee token ID](./Roots.md).  |
 | `signatureFee`      | `uint256`   | 32   | Implicit [fee rate](./Roots.md).             |
 
 Transaction data that is signed off-chain. The unsigned transaction data is [serialized](../0.%20Fundamentals/5.%20Serialization.md) then hashed to get a unique transaction ID, which is then signed over to get a [witness](./Witness.md). Essentially, each witness authorizes an _entire_ transaction. This scheme avoids the [quadratic hashing issue present in Bitcoin](https://bitcointalk.org/index.php?topic=102487.0).
 
-Implicit data (`data`) is one 32-byte hash _per input_, and uniquely identifies what is being spent by that input (a UTXO ID or a [deposit ID](./Deposits.md)).
+Implicit data (`data`) is one 32-byte hash _per input_, and uniquely identifies what is being spent by that input (a [UTXO ID](./Outputs.md) or a [deposit ID](./Deposits.md)).
 
-TODO add how UTXO ID is computed
 TODO how is this specifically serialized and packed?
 
 # TransactionLeaf

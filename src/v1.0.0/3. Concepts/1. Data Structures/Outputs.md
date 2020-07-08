@@ -61,3 +61,21 @@ See also: [HTLC explainer on Bitcoin Wiki](https://en.bitcoin.it/wiki/Hash_Time_
 Return outputs are provably prunable, i.e. they are not inserted into the state (the UTXO set). They can be used to record and timestamp arbitrary information to the Fuel chain, useful for building applications with client-side execution.
 
 See also: [Bitcoin's OP_RETURN](https://en.bitcoin.it/wiki/OP_RETURN).
+
+# UTXO
+
+| name            | type      | size | description                                                                                |
+| --------------- | --------- | ---- | ------------------------------------------------------------------------------------------ |
+| `transactionId` | `bytes32` | 32   | [Transaction ID](./Transactions.md), the hash of the serialized unsigned transaction data. |
+| `outputIndex`   | `uint256` | 32   | Index of output in transaction.                                                            |
+| `outputType`    | `uint256` | 32   | Output's type.                                                                             |
+| `owner`         | `bytes32` | 32   | Owner of UTXO, either a raw address or an [address ID](./Addresses.md).                    |
+| `amount`        | `uint256` | 32   | Amount of tokens.                                                                          |
+| `token`         | `uint256` | 32   | [Token ID](./Tokens.md).                                                                   |
+| `digest`        | `bytes32` | 32   | HTLC only: hashlock.                                                                       |
+| `expiry`        | `uint256` | 32   | HTLC only: timelock.                                                                       |
+| `returnOwner`   | `bytes32` | 32   | HTLC only: return owner.                                                                   |
+
+The UTXO ID is simply the hash of the UTXO.
+
+The HTLC-only fields are set to zero (`0`) if the output is not an HTLC output.
