@@ -3,11 +3,10 @@ Prover: Invalid Inputs
 
 Proves that an [input](./../1.%20Data%20Structures/Inputs.md) was invalid, i.e. a non-existent state element was spent or the spend wasn't authorized correctly.
 
-1. A valid [transaction proof](../2.%20Verifiers/Transaction%20Proof.md), `proof`, must be provided.
+A valid [transaction proof](../2.%20Verifiers/Transaction%20Proof.md), `proof`, must be provided. In addition, a valid [transaction proof block header](././../2.%20Verifiers/Block%20Header.md) for the output being spent, `inputProof` must be provided. Since this output might not exist, the transaction proof does not need to be valid, only the block header.
 1. Get input `input` as `proof.transaction.inputs[proof.inputIndex]`.
 1. If the input's [type](../1.%20Data%20Structures/Inputs.md) is `Deposit`:
     1. The deposit with that [deposit ID](./../1.%20Data%20Structures/Deposits.md) must have amount of `0` (i.e. a non-deposit is being spent).
-1. A valid [transaction proof block header](././../2.%20Verifiers/Block%20Header.md) for the output being spent, `inputProof` must be provided. Since this output might not exist, the transaction proof does not need to be valid, only the block header.
 1. Get metadata `metadata` as `proof.transaction.metadata[proof.inputIndex]`.
 1. The metadata's root index `metadata.rootIndex` must be at least `inputProof.rootHeader.rootLength` (i.e. metadata root index out of bounds).
 1. If the input's [type](../1.%20Data%20Structures/Inputs.md) is `Transfer` or `HTLC`:
