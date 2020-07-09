@@ -18,5 +18,5 @@ A valid [transaction proof](../2.%20Verifiers/Transaction%20Proof.md), `proof`, 
         1. The output's type must not be `Transfer` (i.e. type mismatch).
     1. If the input's [type](../1.%20Data%20Structures/Inputs.md) is `HTLC`:
         1. The output's type must not be `HTLC` (i.e. type mismatch).
-        1. If `proof.blockHeader.blockNumber` is less than `inputProof.transaction.outputs[inputProof.outputIndex].expiry` (i.e. the timelock has not expired):
-            1. The hashlock digest `inputProof.transaction.outputs[inputProof.outputIndex].digest` must not match the hash of the preimage `input.preImage` (i.e. invalid preimage).
+        1. If `proof.blockHeader.blockNumber` is less than `inputProof.transaction.outputs(inputProof.outputIndex).expiry` (i.e. the timelock has not expired):
+            1. The hashlock digest `inputProof.transaction.outputs(inputProof.outputIndex).digest` must not match the hash of the preimage `input.preImage` (i.e. invalid preimage).
