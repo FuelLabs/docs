@@ -16,8 +16,8 @@ Validates a transaction proof is properly formatted.
 | `rootIndex`          | `uint16`                                                       | 2        | Root index.                                                  |
 | `merkleProof.length` | `uint16`                                                       | 2        | Number of nodes in Merkle proof.                             |
 | `merkleProof`        | `bytes32[]`                                                    | 32*      | [Merkle inclusion proof](./Merkle%20Proof.md).               |
-| `input`              | `uint8`                                                        | 1        | Input index.                                                 |
-| `output`             | `uint8`                                                        | 1        | Output index.                                                |
+| `inputIndex`         | `uint8`                                                        | 1        | Input index.                                                 |
+| `outputIndex`        | `uint8`                                                        | 1        | Output index.                                                |
 | `transactionIndex`   | `uint16`                                                       | 2        | Transaction index.                                           |
 | `transaction.length` | `uint16`                                                       | 2        | Length of transaction leaf, in bytes.                        |
 | `transaction`        | [TransactionLeaf](./../1.%20Data%20Structures/Transactions.md) | variable | Transaction leaf substructure.                               |
