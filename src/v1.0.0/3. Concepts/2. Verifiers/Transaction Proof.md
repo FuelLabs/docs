@@ -19,7 +19,6 @@ Validates a transaction proof is properly formatted.
 | `inputIndex`         | `uint8`                                                        | 1        | Input index.                                                             |
 | `outputIndex`        | `uint8`                                                        | 1        | Output index.                                                            |
 | `transactionIndex`   | `uint16`                                                       | 2        | Transaction index.                                                       |
-| `transaction.length` | `uint16`                                                       | 2        | Length of transaction leaf, in bytes.                                    |
 | `transaction`        | [TransactionLeaf](./../1.%20Data%20Structures/Transactions.md) | variable | Transaction leaf substructure.                                           |
 | `data.length`        | `uint8`                                                        | 1        | Next field number of elements.                                           |
 | `data`               | `bytes32[]`                                                    | 32*      | List of state elements being spent.                                      |
