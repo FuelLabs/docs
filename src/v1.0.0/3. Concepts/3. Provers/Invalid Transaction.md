@@ -20,18 +20,26 @@ The witnesses are parsed:
 
 The inputs are parsed:
 1. For each input, shift by the length of the input:
-    1. 
+    1. The input type must be out of [bounds](../1.%20Data%20Structures/Inputs.md).
+    1. The witness reference index `input.witnessIndex` must be out of bounds (i.e. at least the number of witnesses).
 1. The number of parsed inputs must be greater than [`INPUTS_MAX`](../1.%20Data%20Structures/Transactions.md).
 1. The parsed length of inputs must not match `leaf.inputs.length`.
 
 The outputs are parsed:
 1. For each output, shift by the length of the output:
-    1. 
+    1. The output type must be out of [bounds](../1.%20Data%20Structures/Outputs.md).
+    1. If the output type is `Transfer`, `Withdraw`, or `HTLC`:
+        1. The output [token and amount fields](../1.%20Data%20Structures/Outputs.md) must be out of bounds.
+        1. The output [owner field](../1.%20Data%20Structures/Outputs.md) must be out of bounds.
+    1. If the output type is `HTLC`:
+        1. the output [return owner field](../1.%20Data%20Structures/Outputs.md) must be out of bounds.
+    1. If the output type is `Return`:
+        1. The data length must be out of [bounds](../1.%20Data%20Structures/Outputs.md).
 1. The number of parsed outputs must be greater than [`OUTPUTS_MAX`](../1.%20Data%20Structures/Transactions.md).
 1. The parsed length of outputs must not match `leaf.outputs.length`.
 
 The sizes are parsed:
-1. 
+1. The number of metadata elements must not match the number of inputs.
 
 The metadata are parsed:
 1. For each metadata, shift by [the length of the metadata](../1.%20Data%20Structures/Metadata.md):
