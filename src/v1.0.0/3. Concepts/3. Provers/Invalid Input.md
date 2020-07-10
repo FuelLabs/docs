@@ -1,7 +1,7 @@
 Prover: Invalid Inputs
 ===
 
-Proves that an [input](./../1.%20Data%20Structures/Inputs.md) was invalid, i.e. a non-existent state element was spent or the spend wasn't authorized correctly.
+Proves that an [input](./../1.%20Data%20Structures/Inputs.md) was invalid, i.e. a non-existent state element was spent.
 
 A valid [transaction proof](../2.%20Verifiers/Transaction%20Proof.md), `proof`, must be provided. In addition, a valid [transaction proof block header](././../2.%20Verifiers/Block%20Header.md) for the output being spent, `inputProof` must be provided. Since this output might not exist, the transaction proof does not need to be valid, only the block header.
 1. Get input `input` as `proof.transaction.inputs(proof.inputIndex)`.
