@@ -19,13 +19,21 @@ The witnesses are parsed:
 1. The parsed length of witnesses must not match `leaf.witnesses.length`.
 
 The inputs are parsed:
-1. 
+1. For each input, shift by the length of the input:
+    1. 
+1. The number of parsed inputs must be greater than [`INPUTS_MAX`](../1.%20Data%20Structures/Transactions.md).
+1. The parsed length of inputs must not match `leaf.inputs.length`.
 
 The outputs are parsed:
-1. 
+1. For each output, shift by the length of the output:
+    1. 
+1. The number of parsed outputs must be greater than [`OUTPUTS_MAX`](../1.%20Data%20Structures/Transactions.md).
+1. The parsed length of outputs must not match `leaf.outputs.length`.
 
 The sizes are parsed:
 1. 
 
 The metadata are parsed:
-1. 
+1. For each metadata, shift by [the length of the metadata](../1.%20Data%20Structures/Metadata.md):
+    1. 
+1. The parsed length of metadata must not match `leaf.metadata.length`.
