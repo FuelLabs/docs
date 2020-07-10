@@ -43,5 +43,5 @@ The sizes are parsed:
 
 The metadata are parsed:
 1. For each metadata, shift by [the length of the metadata](../1.%20Data%20Structures/Metadata.md):
-    1. 
+    1. The metadata [fields](../1.%20Data%20Structures/Metadata.md) must be out of bounds.
 1. The parsed length of metadata must not match `leaf.metadata.length`.
