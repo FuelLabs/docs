@@ -44,4 +44,8 @@ When a new block header is produced and committed to Ethereum, the following che
 1. The previous block hash `previousBlockHash` must match the previous block hash at `blockHeight`.
 1. The number of transaction roots `roots.length` must be greater than `0` and at most `TRANSACTION_ROOTS_MAX`.
 1. Every root in `roots` must exist in the root registry.
-1. TODO describe penalty mode
+1. If the operator is _not_ in _penalty mode_ (discussed below):
+    1. If the block producer `producer` is not the operator:
+        1. At least the [submission delay parameter](../0.%20Fundamentals/7.%20Deployment%20Parameters.md) Ethereum blocks must have elapsed since the root was submitted.
+
+The penalty mode becomes active if a successful fraud proof against an operator-produced block is processed. It remains active for the [penalty delay parameter](./../0.%20Fundamentals/7.%20Deployment%20Parameters.md) Ethereum blocks.
