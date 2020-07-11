@@ -36,6 +36,7 @@ function tree(list = []) {
   return result;
 }
 
+// TODO if there's a space in the hierarchy then this doesn't work properly
 const treeToPanel2 = (_tree, state = {}) => _tree
   .map(v => v.children.length
       ? (<div id={v.dir} class="group">
@@ -73,6 +74,7 @@ document
 
 const filterVersion = (_tree, version = 'v1.0.0') => _tree.filter(v => v.name === version)[0].children;
 
+// TODO fix search
 function search(pattern) {
   document.getElementById('content').innerHTML = '<h1>Search Results</h1>';
 
