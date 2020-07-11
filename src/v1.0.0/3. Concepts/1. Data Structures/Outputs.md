@@ -3,7 +3,8 @@ Outputs
 
 Outputs define which state elements (usually: UTXOs) are produced by a [transaction](./Transactions.md). Each state element can be produced and consumed at most once.
 
-# OutputType
+OutputType
+---
 
 ```
 enum OutputType : uint8 {
@@ -14,7 +15,8 @@ enum OutputType : uint8 {
 }
 ```
 
-# Output
+Output
+---
 
 | name            | type         | size | description                                                                                                        |
 | --------------- | ------------ | ---- | ------------------------------------------------------------------------------------------------------------------ |
@@ -29,7 +31,8 @@ enum OutputType : uint8 {
 
 A simple transfer between two users on Fuel or a withdrawal from Fuel back to Ethereum.
 
-# OutputHTLC
+OutputHTLC
+---
 
 | name                 | type         | size | description                                                                                                                    |
 | -------------------- | ------------ | ---- | ------------------------------------------------------------------------------------------------------------------------------ |
@@ -50,7 +53,8 @@ The timelock expiry is an _absolute_ Ethereum block number. Any rollup block com
 
 See also: [HTLC explainer on Bitcoin Wiki](https://en.bitcoin.it/wiki/Hash_Time_Locked_Contracts).
 
-# OutputReturn
+OutputReturn
+---
 
 | name          | type         | size | description                                        |
 | ------------- | ------------ | ---- | -------------------------------------------------- |
@@ -62,7 +66,8 @@ Return outputs are provably prunable, i.e. they are not inserted into the state 
 
 See also: [Bitcoin's OP_RETURN](https://en.bitcoin.it/wiki/OP_RETURN).
 
-# UTXO
+UTXO
+---
 
 | name            | type      | size | description                                                                                |
 | --------------- | --------- | ---- | ------------------------------------------------------------------------------------------ |

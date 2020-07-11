@@ -1,7 +1,8 @@
 Witness
 ===
 
-# WitnessType
+WitnessType
+---
 
 ```
 enum WitnessType : uint8 {
@@ -13,7 +14,8 @@ enum WitnessType : uint8 {
 
 Witnesses come in different types, depending on the origin of the authorization.
 
-# Signature
+Signature
+---
 
 | name   | type          | size | description          |
 | ------ | ------------- | ---- | -------------------- |
@@ -26,7 +28,8 @@ This is a normal signature that signs over the [transaction ID](./Transactions.m
 
 See: [EIP-155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md).
 
-# Caller
+Caller
+---
 
 | name          | type          | size | description                                      |
 | ------------- | ------------- | ---- | ------------------------------------------------ |
@@ -38,7 +41,8 @@ This witness type is for when a contract on Ethereum authorizes a Fuel transacti
 
 Caller witnesses in the witness registry are indexed by owner and block number.
 
-# Producer
+Producer
+---
 
 | name   | type          | size | description                     |
 | ------ | ------------- | ---- | ------------------------------- |
