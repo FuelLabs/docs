@@ -3,7 +3,8 @@ Transactions
 
 Transactions consume [inputs](./Inputs.md) and produce [outputs](./Outputs.md).
 
-# UnsignedTransaction
+UnsignedTransaction
+---
 
 | name                | type        | size | description                                  |
 | ------------------- | ----------- | ---- | -------------------------------------------- |
@@ -24,7 +25,8 @@ TODO how is the transaction ID computed? EIP-712?
 
 TODO how is this specifically serialized and packed?
 
-# TransactionLeaf
+TransactionLeaf
+---
 
 | name               | type       | size | description                        |
 | ------------------ | ---------- | ---- | ---------------------------------- |

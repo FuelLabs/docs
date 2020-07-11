@@ -5,7 +5,8 @@ Each [transaction](./Transactions.md) can have metadata attached to it by the bl
 
 Note that all metadata objects are exactly `8` bytes.
 
-# Metadata
+Metadata
+---
 
 | name               | type     | size | description                  |
 | ------------------ | -------- | ---- | ---------------------------- |
@@ -16,7 +17,8 @@ Note that all metadata objects are exactly `8` bytes.
 
 Metadata uniquely identifies an exact [output](./Outputs.md) in the ledger, first by the [block height](./Blocks.md), then the [root](./Roots.md), [transaction index](./Roots.md), and finally [output index](./Transactions.md). Essentially, metadata "references" an exact output. This allows for both compact fraud proofs without serializing the state, leveraging the property that UTXOs are produced and consumed at most once, and smaller transaction payloads than using [UTXO IDs](./Outputs.md) directly (a 32-byte hash).
 
-# MetadataDeposit
+MetadataDeposit
+---
 
 | name          | type     | size | description            |
 | ------------- | -------- | ---- | ---------------------- |
