@@ -469,8 +469,10 @@ code {
 
   #search {
     width: 100%;
+    border-style: solid;
     font-size: 19px;
     margin-bottom: 20px;
+    border-style: solid;
   }
 
   #search-wrapper img {

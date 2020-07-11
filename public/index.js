@@ -57,6 +57,8 @@ const treeToPanel2 = (_tree, state = {}) => _tree
         </div>)
       : (<a
           id={title(v.name)}
+          data-path={state.pathname}
+          data-id={normalize(v.path)}
           class={'link ' + (
           isOpen(state.pathname, normalize(v.path)) ? 'link-open' : 'link-not-open'
         )} href={normalize(v.path)}>
@@ -90,7 +92,7 @@ function search(pattern) {
   document.getElementById('content').innerHTML = '<h1>Search Results</h1>';
 
   for (const file of window.files.map(normalize)) {
-    window.axios.get('/' + file + '.md')
+    window.axios.get('https://docs.fuel.sh' + file + '.md')
     .then(function (response) {
 
       const fuse = new Fuse([{
@@ -104,7 +106,8 @@ function search(pattern) {
       });
 
       let result = fuse.search(pattern);
-      const clean = v => v.split('__').join(': ').split('_').join(' ');
+      const clean = v => v.replace('https://docs.fuel.sh/v1.0.0/', '')
+        .split('__').join(': ').split('_').join(' ');
 
       if (result.length === 0 && response.data.indexOf(pattern) !== -1) {
         result.push({ item: {
@@ -153,6 +156,10 @@ const view = state => (
             search(event.target.value);
           }
           return state;
+        }} onkeypress={(state, event) => {
+          if (event.keyCode === 13) {
+            search(event.target.value);
+          }
         }} />
         <img src={searchIconLight} />
       </div>
@@ -163,7 +170,7 @@ const view = state => (
 );
 
 const start = window.location.pathname === '/'
-  ? 'v1.0.0/Introduction/Welcome.html'
+  ? '/v1.0.0/Introduction/Welcome.html'
   : window.location.pathname;
 
 app({
