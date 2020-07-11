@@ -7,4 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - run: echo "{
+  'replacementPatterns': [
+    {
+      'pattern': '^/',
+      'replacement': $GITHUB_WORKSPACE,
+    }
+  ],
+}
+" > config.json
     - uses: gaurav-nelson/github-action-markdown-link-check@1.0.3
+      - config-file: config.json
