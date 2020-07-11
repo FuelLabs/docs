@@ -40,9 +40,6 @@ const filterVersion = (_tree, version = 'v1.0.0') => _tree.filter(v => v.name ==
 
   // copy parcel build over
   for (const file of list(build)) {
-    // const content = await fs.readFile(path.join(build, file), 'utf8');
-    // await fse.outputFile(path.join(dist, file), content);
-
     await fse.copy(path.join(build, file), path.join(dist, file));
   }
 
