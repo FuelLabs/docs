@@ -40,14 +40,12 @@ function is_numeric(str){
 
 const normalize = file => file
   .split('/')
-  .map(v => (is_numeric(v[0]) ? v.slice(v.indexOf('.') + 1) : v).split(' ').join('_'))
-  .join('__')
+  .map(v => (is_numeric(v[0]) ? v.slice(v.indexOf('.') + 2) : v))
+  .join('/')
   .replace('&', 'and')
   .replace('.md', '.html');
 
 const title = file => normalize(file.split('/').pop())
-  .split('_')
-  .join(' ')
   .trim()
   .replace('.md', '')
   .replace('.html', '');

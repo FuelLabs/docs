@@ -8,14 +8,12 @@ function is_numeric(str){
 
 const normalize = file => file
   .split('/')
-  .map(v => (is_numeric(v[0]) ? v.slice(v.indexOf('.') + 1) : v).split(' ').join('_'))
-  .join('__')
+  .map(v => (is_numeric(v[0]) ? v.slice(v.indexOf('.') + 2) : v))
+  .join('/')
   .replace('&', 'and')
   .replace('.md', '.html');
 
 const title = file => normalize(file.split('/').pop())
-  .split('_')
-  .join(' ')
   .trim()
   .replace('.md', '')
   .replace('.html', '');
@@ -38,6 +36,7 @@ function tree(list = []) {
   return result;
 }
 
+// TODO if there's a space in the hierarchy then this doesn't work properly
 const arrow = require('./arrow.svg');
 const arrowDark = require('./arrow-dark.svg');
 
@@ -84,6 +83,7 @@ document
 
 const filterVersion = (_tree, version = 'v1.0.0') => _tree.filter(v => v.name === version)[0].children;
 
+// TODO fix search
 function search(pattern) {
   document.getElementById('content').innerHTML = '<h1>Search Results</h1>';
 
@@ -161,7 +161,7 @@ const view = state => (
 );
 
 const start = window.location.pathname === '/'
-  ? '__v1.0.0___Introduction___Welcome.html'
+  ? 'v1.0.0/Introduction/Welcome.html'
   : window.location.pathname;
 
 app({
