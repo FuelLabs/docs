@@ -8,14 +8,12 @@ function is_numeric(str){
 
 const normalize = file => file
   .split('/')
-  .map(v => (is_numeric(v[0]) ? v.slice(v.indexOf('.') + 1) : v).split(' ').join('_'))
-  .join('__')
+  .map(v => (is_numeric(v[0]) ? v.slice(v.indexOf('.') + 2) : v))
+  .join('/')
   .replace('&', 'and')
   .replace('.md', '.html');
 
 const title = file => normalize(file.split('/').pop())
-  .split('_')
-  .join(' ')
   .trim()
   .replace('.md', '')
   .replace('.html', '');
@@ -50,7 +48,7 @@ const treeToPanel2 = (_tree, state = {}) => _tree
           id={title(v.name)}
           class={'link ' + (
           state.pathname.indexOf(normalize(v.path)) !== -1 ? 'link-open' : ''
-        )} href={normalize(v.path) + '#' + title(v.name)}>{title(v.name)}</a>));
+        )} href={normalize(v.path)}>{title(v.name)}</a>));
 
 
 /*
@@ -139,7 +137,7 @@ const view = state => (
 );
 
 const start = window.location.pathname === '/'
-  ? '__v1.0.0___Introduction___Welcome.html'
+  ? 'v1.0.0/Introduction/Welcome.html'
   : window.location.pathname;
 
 app({
