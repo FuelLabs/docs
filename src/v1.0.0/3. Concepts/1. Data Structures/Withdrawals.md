@@ -1,7 +1,8 @@
 Withdrawals
 ===
 
-# Withdrawal Metadata
+Withdrawal Metadata
+---
 
 | name                  | padded type | compact type | size | description                                                                |
 | --------------------- | ----------- | ------------ | ---- | -------------------------------------------------------------------------- |
