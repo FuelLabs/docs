@@ -11,6 +11,7 @@ jobs:
       - name: Create config file
         run: |
           echo "{ 'replacementPatterns': [ { 'pattern': '^/', 'replacement': $GITHUB_WORKSPACE } ] }" > config.json
+          cat config.json
       - name: Check links
         uses: gaurav-nelson/github-action-markdown-link-check@1.0.3
         with:
