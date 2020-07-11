@@ -38,10 +38,18 @@ function tree(list = []) {
   return result;
 }
 
+const arrow = require('./arrow.svg');
+const arrowDark = require('./arrow-dark.svg');
+
 const treeToPanel2 = (_tree, state = {}) => _tree
   .map(v => v.children.length
-      ? (<div id={v.dir} class="group">
-          <h2 class="group-header" onclick={state => ({ ...state, open: v.dir })}>{title(v.name)}</h2>
+      ? (<div id={v.dir} class={'group ' + (state.open.indexOf(v.dir) !== -1 ? 'group-now' : '')}>
+          <h2 class="group-header" onclick={state => ({ ...state, open: v.dir })}>
+            <a href={normalize(v.path)}>
+              <img src={state.open.indexOf(v.dir) !== -1 ? arrowDark : arrow} class="arrow" />
+              {title(v.name)}
+            </a>
+          </h2>
           <div class={'group-children ' + (
             (state.open.indexOf(v.dir) !== -1 ? 'group-open' : '')
           )}>{treeToPanel2(v.children, state)}</div>
@@ -49,9 +57,10 @@ const treeToPanel2 = (_tree, state = {}) => _tree
       : (<a
           id={title(v.name)}
           class={'link ' + (
-          state.pathname.indexOf(normalize(v.path)) !== -1 ? 'link-open' : ''
-        )} href={normalize(v.path) + '#' + title(v.name)}>{title(v.name)}</a>));
-
+          state.pathname.indexOf(normalize(v.path)) !== -1 ? 'link-open' : 'link-not-open'
+        )} href={normalize(v.path)}>
+          <span class="dot"></span>{title(v.name)}
+        </a>));
 
 /*
 
@@ -92,9 +101,15 @@ function search(pattern) {
         ],
       });
 
-      const result = fuse.search(pattern);
-
+      let result = fuse.search(pattern);
       const clean = v => v.split('__').join(': ').split('_').join(' ');
+
+      if (result.length === 0 && response.data.indexOf(pattern) !== -1) {
+        result.push({ item: {
+          title: response.config.url,
+          content: response.data,
+        }});
+      }
 
       if (result.length) {
         result.map(({ item }) => {
@@ -122,19 +137,26 @@ function search(pattern) {
   }
 }
 
+const editIcon = require('./edit.svg');
+const searchIcon = require('./search.svg');
+const searchIconLight = require('./search-gray.svg');
+
 const view = state => (
   <div>
     <div id="panel-header">
-      <input type="text" id="search" placeholder="Search..." onkeyup={(state, event) => {
-        event.preventDefault();
-        if (event.keyCode === 13) {
-          search(event.target.value);
-        }
-        return state;
-      }} />
-      <a href="#">v1.0.0</a>
+      <div id="search-wrapper">
+        <input type="text" id="search" placeholder="Search..." onkeyup={(state, event) => {
+          event.preventDefault();
+          if (event.keyCode === 13) {
+            search(event.target.value);
+          }
+          return state;
+        }} />
+        <img src={searchIconLight} />
+      </div>
     </div>
     {treeToPanel2(filterVersion(tree(window.files)), state)}
+    <div href="#" id="version">v 1.0.0</div>
   </div>
 );
 

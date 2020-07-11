@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./index.css">
 
-
   </head>
 
   <body>
@@ -30,6 +29,9 @@
       window.files = '%%files%%';
 
       window.addEventListener('load', () => {
+
+        window.scroll(0, 0);
+
         document.body.onclick = function(e) {   //when the document body is clicked
           let _orig = e;
 
@@ -61,14 +63,13 @@
       <div id="header">
         <a id="logo" href="https://fuel.sh">
           <img src="./logo.svg" />
-          Fuel
         </a>
 
         <div id="nav">
           <img id="toggle" src="./open-menu.svg" width="20" height="20" />
           <a href="/network">Network</a>
           <a href="/labs">Labs</a>
-          <a href="https://docs.fuel.sh"><b>Developers</b></a>
+          <a href="https://docs.fuel.sh" class="nav-open"><b>Developers</b></a>
         </div>
       </div>
 
@@ -77,11 +78,20 @@
       <div id="docs">
         <div id="content-wrapper">
           <div id="content">
-            <a id="edit" href="https://github.com/FuelLabs/docs/blob/master/src%%file%%">
-              <i>edit</i>
-            </a>
             %%content%%
-            <a id="next" href="%%next%%"><i>%%nextTitle%% &gt;</i></a>
+            <div id="edit-wrapper">
+              <a id="edit" href="https://github.com/FuelLabs/docs/blob/master/src%%file%%">
+                Edit this page
+                <img src="./edit.svg" />
+              </a>
+            </div>
+            <div id="bottom">
+              <div></div>
+              <a id="next" href="%%next%%">
+                <span><i>Next</i></span>
+                <div>%%nextTitle%% <img src="./next.svg" /></div>
+              </a>
+            </div>
           </div>
         </div>
       </div>
