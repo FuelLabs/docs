@@ -3,7 +3,8 @@ Deposits
 
 The deposit registry uniquely indexes deposits so they can be spent on Fuel.
 
-# Deposit
+Deposit
+---
 
 | name          | type      | size | description                             |
 | ------------- | --------- | ---- | --------------------------------------- |

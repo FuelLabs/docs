@@ -3,7 +3,8 @@ Inputs
 
 Inputs indicate which state elements (usually: UTXOs) are consumed by a [transaction](./Transactions.md). Each state element can be consumed and produced at most once.
 
-# InputType
+InputType
+---
 
 ```
 enum InputType : uint8 {
@@ -14,7 +15,8 @@ enum InputType : uint8 {
 }
 ```
 
-# Input
+Input
+---
 
 | name           | type        | size | description                                                  |
 | -------------- | ----------- | ---- | ------------------------------------------------------------ |
@@ -23,7 +25,8 @@ enum InputType : uint8 {
 
 There are no spending conditions on plain transfer UTXOs and root UTXOs (collected fees) other than a valid signature from the owner of the UTXO.
 
-# InputDeposit
+InputDeposit
+---
 
 | name           | type        | size | description                                            |
 | -------------- | ----------- | ---- | ------------------------------------------------------ |
@@ -33,7 +36,8 @@ There are no spending conditions on plain transfer UTXOs and root UTXOs (collect
 
 There are no spending conditions on deposits other than a valid signature from the owner of the UTXO. The owner of the deposit must be provided as it is needed to compute the unique [deposit ID](./Deposits.md).
 
-# InputHTLC 
+InputHTLC
+---
 
 | name           | type        | size | description                                                  |
 | -------------- | ----------- | ---- | ------------------------------------------------------------ |
