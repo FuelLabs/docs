@@ -36,27 +36,29 @@ function tree(list = []) {
   return result;
 }
 
+const isOpen = (path, dir) => path.split('%20').join(' ').indexOf(dir) !== -1;
+
 // TODO if there's a space in the hierarchy then this doesn't work properly
 const arrow = require('./arrow.svg');
 const arrowDark = require('./arrow-dark.svg');
 
 const treeToPanel2 = (_tree, state = {}) => _tree
   .map(v => v.children.length
-      ? (<div id={v.dir} class={'group ' + (state.open.indexOf(v.dir) !== -1 ? 'group-now' : '')}>
+      ? (<div id={v.dir} class={'group ' + (isOpen(state.open, v.dir) ? 'group-now' : '')}>
           <h2 class="group-header" onclick={state => ({ ...state, open: v.dir })}>
             <a href={normalize(v.path)}>
-              <img src={state.open.indexOf(v.dir) !== -1 ? arrowDark : arrow} class="arrow" />
+              <img src={isOpen(state.open, v.dir) ? arrowDark : arrow} class="arrow" />
               {title(v.name)}
             </a>
           </h2>
           <div class={'group-children ' + (
-            (state.open.indexOf(v.dir) !== -1 ? 'group-open' : '')
+            (isOpen(state.open, v.dir) ? 'group-open' : '')
           )}>{treeToPanel2(v.children, state)}</div>
         </div>)
       : (<a
           id={title(v.name)}
           class={'link ' + (
-          state.pathname.indexOf(normalize(v.path)) !== -1 ? 'link-open' : 'link-not-open'
+          isOpen(state.pathname, normalize(v.path)) ? 'link-open' : 'link-not-open'
         )} href={normalize(v.path)}>
           <span class="dot"></span>{title(v.name)}
         </a>));
