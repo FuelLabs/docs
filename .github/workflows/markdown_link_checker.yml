@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@2
       - name: Create config file
         run: |
           echo "{ 'replacementPatterns': [ { 'pattern': '^/', 'replacement': $GITHUB_WORKSPACE } ] }" > config.json
