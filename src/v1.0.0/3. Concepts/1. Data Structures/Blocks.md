@@ -42,6 +42,6 @@ When a new block header is produced and committed to Ethereum, the following che
 
 1. The height `blockHeight` must be greater than `0` and at most the tip height.
 1. The previous block hash `previousBlockHash` must match the previous block hash at `blockHeight`.
-1. The number of transaction roots `roots.length` must be greater than `0` and at most [`TRANSACTION_ROOTS_MAX`].
+1. The number of transaction roots `roots.length` must be greater than `0` and at most `TRANSACTION_ROOTS_MAX`.
 1. Every root in `roots` must exist in the root registry.
 1. TODO describe penalty mode
