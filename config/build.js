@@ -4,7 +4,17 @@ const fs = require('fs').promises;
 const fse = require('fs-extra');
 const showdown  = require('showdown');
 const { markdownToTxt } = require('markdown-to-txt');
-const converter = new showdown.Converter({ tables: true });
+
+const replaceLinksExtension = {
+  type: "lang",
+  regex: /\[(.*)\]\((.*)\.md\)/g,
+  replace: "[$1]($2.html)",
+};
+showdown.extension('replace-md-links', replaceLinksExtension);
+const converter = new showdown.Converter({
+  tables: true,
+  extensions: ['replace-md-links'],
+});
 
 const src = './src/';
 const dist = './dist/';
