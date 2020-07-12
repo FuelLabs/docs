@@ -15,6 +15,7 @@ jobs:
       - name: Find files
         run: |
           find "$(pwd -P)" -name '*.md' -not -path './node_modules/*'
+          find "$(pwd -P)" -name '*.jpg' -not -path './node_modules/*'
       - name: Check links
         uses: gaurav-nelson/github-action-markdown-link-check@1.0.3
         with:
