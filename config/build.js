@@ -20,6 +20,7 @@ const src = './src/';
 const dist = './dist/';
 const build = './build/';
 const index = './build/index.html';
+const assets = './assets/';
 
 const treeToPanel = _tree => _tree
   .map(v => v.children.length
@@ -37,6 +38,9 @@ const filterVersion = (_tree, version = 'v1.0.0') => _tree.filter(v => v.name ==
   const panel = treeToPanel(filterVersion(tree(src)));
 
   await fse.remove(dist);
+
+  // copy assets over
+  await fse.copy(assets, path.join(dist, 'assets'));
 
   // copy parcel build over
   for (const file of list(build)) {
