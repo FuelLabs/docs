@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Create config file
         run: |
-          echo "{ \"replacementPatterns\": [ { \"pattern\": \"^/\", \"replacement\": \"${HOME}/\" } ] }" > config.json
+          echo "{ \"replacementPatterns\": [ { \"pattern\": \"^/\", \"replacement\": \"/github/workspace/\" } ] }" > config.json
           cat config.json
       - name: Find files
         run: |
