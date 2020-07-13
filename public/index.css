@@ -142,10 +142,6 @@ code {
   transition: color 0.2s ease;
 }
 
-#content-wrapper:hover ~ #nav {
-  background: red;
-}
-
 #panel-wrapper:hover .group-header a {
   color: #69737d!important;
 }
