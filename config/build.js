@@ -13,10 +13,19 @@ const replaceLinksExt = {
 };
 showdown.extension('replace-md-links', replaceLinksExt);
 
+// Remove "#. " prefix
+const removePrefixExt = {
+  type: "lang",
+  regex: /(\/|\]\()[0-9]+\.((%20)| )/g,
+  replace: "$1",
+};
+showdown.extension('prefix-md-links', removePrefixExt);
+
 const converter = new showdown.Converter({
   tables: true,
   extensions: [
     'replace-md-links',
+    'prefix-md-links',
   ],
 });
 
