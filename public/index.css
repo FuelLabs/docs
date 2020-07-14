@@ -279,7 +279,8 @@ code {
 
 #content a {
   text-decoration: none;
-  font-weight: 400;
+  font-weight: 600;
+  color: #236a4a!important;
 }
 
 #content a:hover {
