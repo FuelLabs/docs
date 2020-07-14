@@ -5,15 +5,19 @@ const fse = require('fs-extra');
 const showdown  = require('showdown');
 const { markdownToTxt } = require('markdown-to-txt');
 
-const replaceLinksExtension = {
+// Replace .md with .html
+const replaceLinksExt = {
   type: "lang",
-  regex: /\[(.*)\]\((.*)\.md\)/g,
+  regex: /\[(.+?)\]\((.+?)\.md\)/g,
   replace: "[$1]($2.html)",
 };
-showdown.extension('replace-md-links', replaceLinksExtension);
+showdown.extension('replace-md-links', replaceLinksExt);
+
 const converter = new showdown.Converter({
   tables: true,
-  extensions: ['replace-md-links'],
+  extensions: [
+    'replace-md-links',
+  ],
 });
 
 const src = './src/';
