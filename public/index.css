@@ -280,6 +280,29 @@ code {
   cursor: pointer;
 }
 
+#content strong {
+  font-weight: 500;
+}
+
+#content li p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+#content h4 {
+  font-weight: 600;
+  font-size: 1.5em;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+#content h5 {
+  font-weight: 600;
+  font-size: 1.5em;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
 .search-item {
   margin-bottom: 40px;
   padding-bottom: 40px;
