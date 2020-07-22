@@ -34,6 +34,28 @@
 
         window.scroll(0, 0);
 
+        const nav = document.querySelector("#header");
+        const scrollUp = "scroll-up";
+        const scrollDown = "scroll-down";
+        let lastScroll = 0;
+        window.addEventListener("scroll", () => {
+          const currentScroll = window.pageYOffset;
+          if (currentScroll == 0) {
+            nav.classList.remove(scrollUp);
+            return;
+          }
+          if (currentScroll > lastScroll && !nav.classList.contains(scrollDown)) {
+            // down
+            nav.classList.remove(scrollUp);
+            nav.classList.add(scrollDown);
+          } else if (currentScroll < lastScroll && nav.classList.contains(scrollDown)) {
+            // up
+            nav.classList.remove(scrollDown);
+            nav.classList.add(scrollUp);
+          }
+          lastScroll = currentScroll;
+        });
+
         document.body.onclick = function(e) {   //when the document body is clicked
           let _orig = e;
 
@@ -63,15 +85,16 @@
 
     <div id="container">
       <div id="header">
-        <a id="logo" href="https://fuel.sh">
-          <img src="./logo.svg" />
-        </a>
+        <div></div>
 
         <div id="nav">
           <img id="toggle" src="./open-menu.svg" width="20" height="20" />
           <a href="/network">Network</a>
           <a href="/labs">Labs</a>
-          <a href="https://docs.fuel.sh" class="nav-open"><b>Developers</b></a>
+          <span class="nav-break"></span>
+          <a href="https://docs.fuel.sh" class="nav-open"><b>Docs</b></a>
+          <a href="https://github.com/fuellabs" target="_blank" class="nav-open social"><img src="./github.svg" /></a>
+          <a href="https://discord.gg/Z2GKAP" target="_blank" class="nav-open social"><img src="./discord.svg" /></a>
         </div>
       </div>
 
@@ -88,6 +111,10 @@
               </a>
             </div>
             <div id="bottom">
+              <a id="next" class="%%showBack%% next-back" href="%%back%%">
+                <span><i>Previous</i></span>
+                <div><img class="next-flip" src="./next.svg" /> %%backTitle%%</div>
+              </a>
               <div></div>
               <a id="next" href="%%next%%">
                 <span><i>Next</i></span>
