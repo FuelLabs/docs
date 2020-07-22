@@ -40,7 +40,7 @@
         let lastScroll = 0;
         window.addEventListener("scroll", () => {
           const currentScroll = window.pageYOffset;
-          if (currentScroll == 0) {
+          if (currentScroll <= 0) {
             nav.classList.remove(scrollUp);
             return;
           }
@@ -79,12 +79,17 @@
           .addEventListener("click", event => {
             document.getElementById('panel-wrapper').classList.toggle("panel-open");
             document.getElementById('content').classList.toggle("panel-closed");
+            document.getElementById('header_logo').classList.toggle("logo-closed");
           });
       });
     </script>
 
     <div id="container">
       <div id="header">
+        <a id="header_logo" class="logo header-logo" href="https://fuel.sh">
+          <img src="./logo.svg" />
+        </a>
+
         <div></div>
 
         <div id="nav">

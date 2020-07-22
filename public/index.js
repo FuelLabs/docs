@@ -47,8 +47,10 @@ const treeToPanel2 = (_tree, state = {}) => _tree
       ? (<div id={v.dir} class={'group ' + (isOpen(state.open, v.dir) ? 'group-now' : '')}>
           <h2 class="group-header" onclick={state => ({ ...state, open: v.dir })}>
             <a href="#">
-              <img src={isOpen(state.open, v.dir) ? arrowDark : arrow} class="arrow" />
-              {title(v.name)}
+              <img
+                src={isOpen(state.open, v.dir) ? arrowDark : arrow}
+                class={isOpen(state.open, v.dir) ? 'arrow arrow-turned' : 'arrow'} />
+                {title(v.name)}
             </a>
           </h2>
           <div class={'group-children ' + (
@@ -149,7 +151,7 @@ const logo = require('./logo.svg');
 
 const view = state => (
   <div>
-    <a id="logo" href="https://fuel.sh">
+    <a class="logo" href="https://fuel.sh">
       <img src={logo} />
     </a>
     <div id="panel-header">
