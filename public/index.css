@@ -300,7 +300,7 @@ code {
 }
 
 #content img {
-  max-width: 80vw;
+  max-width: 100%;
 }
 
 #content h1 {
@@ -677,6 +677,10 @@ code {
 
   #content {
     width: 90vw;
+  }
+
+  #content img {
+    max-width: 80vw;
   }
 
   #content-wrapper {
