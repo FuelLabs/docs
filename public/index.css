@@ -566,6 +566,14 @@ code {
   color: #69737d;
 }
 
+.next-first {
+  display: flex !important;
+}
+
+.next-second {
+  display: none !important;
+}
+
 #toggle {
   display: none;
 }
@@ -596,6 +604,18 @@ code {
   html, body {
     max-width: 100%;
     overflow-x: hidden;
+  }
+
+  #next span {
+    display: none;
+  }
+
+  .next-first {
+    display: none !important;
+  }
+
+  .next-second {
+    display: flex !important;
   }
 
   #header {
