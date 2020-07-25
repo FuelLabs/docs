@@ -26,4 +26,4 @@ TransactionProof
 | `signatureFeeToken`  | `uint256`                                                      | 32       | Implicit [fee token ID](../1.%20Data%20Structures/Roots.md).             |
 | `signatureFee`       | `uint256`                                                      | 32       | Implicit [fee rate](./../1.%20Data%20Structures/Roots.md).               |
 | `token`              | `address`                                                      | 20       | Token address, used for [invalid sum](../3.%20Provers/Invalid%20Sum.md). |
-| `selector`           | `address`                                                      | 20       | TODO                                                                     |
+| `returnOwner`        | `address`                                                      | 20       | For HTLC outputs only, the return owner.                                 |
