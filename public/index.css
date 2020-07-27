@@ -300,7 +300,7 @@ code {
 }
 
 #content img {
-  max-width: 80vw;
+  max-width: 100%;
 }
 
 #content h1 {
@@ -566,6 +566,14 @@ code {
   color: #69737d;
 }
 
+.next-first {
+  display: flex !important;
+}
+
+.next-second {
+  display: none !important;
+}
+
 #toggle {
   display: none;
 }
@@ -596,6 +604,18 @@ code {
   html, body {
     max-width: 100%;
     overflow-x: hidden;
+  }
+
+  #next span {
+    display: none;
+  }
+
+  .next-first {
+    display: none !important;
+  }
+
+  .next-second {
+    display: flex !important;
   }
 
   #header {
@@ -677,6 +697,10 @@ code {
 
   #content {
     width: 90vw;
+  }
+
+  #content img {
+    max-width: 80vw;
   }
 
   #content-wrapper {
