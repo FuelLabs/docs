@@ -151,8 +151,9 @@ const logo = require('./logo.svg');
 
 const view = state => (
   <div>
-    <a class="logo" href="https://fuel.sh">
+    <a class="logo logo-panel" href="https://fuel.sh">
       <img src={logo} />
+      <span>Fuel</span>
     </a>
     <div id="panel-header">
       <div id="search-wrapper">
