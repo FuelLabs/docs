@@ -160,7 +160,7 @@ code {
   top: 0px;
   bottom: 0px;
   min-width: 270px;
-  margin-left: 80px;
+  margin-left: 12.5%;
   overflow: hidden;
   overflow: scroll;
   z-index: 100000;
@@ -214,7 +214,7 @@ code {
 #panel {
   margin-left: 20px;
   min-width: 270px;
-  margin-top: 40px;
+  margin-top: 68px;
   z-index: 1000;
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
 }
@@ -282,8 +282,8 @@ code {
   flex-direction: row;
   justify-content: center;
   width: 100vw;
-  margin-left: 200px;
-  margin-top: -13px;
+  margin-left: 250px;
+  margin-top: 40px;
 }
 
 #content {
@@ -395,9 +395,9 @@ code {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-top: 20px;
+  padding-left: 15%;
+  padding-right: 15%;
+  padding-top: 68px;
   height: 60px;
   z-index: 100000;
   transition: background-color 0.1s ease-in;
@@ -410,7 +410,7 @@ code {
 }
 
 .scroll-down {
-  top: -100px!important;
+  top: -200px!important;
 }
 
 #nav {
@@ -422,27 +422,47 @@ code {
 
 .nav-break {
   width: 1px;
-  height: 20px;
-  background: #69737d;
-  margin-left: 30px;
+  height: 32px;
+  background: #a6b3bc;
+  margin-left: 15px;
 }
 
 #nav a img {
-  height: 34px;
-  width: 34px;
+  height: 24px;
+  width: 24px;
 }
 
 #nav a {
   margin-left: 30px;
   color: #69737d;
-  font-size: 17px;
-  font-weight: 300;
+  font-size: 18px;
+  font-weight: 500;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-#nav:hover a {
-  color: #69737d!important;
+.social-first {
+  margin-left: 15px!important;
+}
+
+.nav-hover:hover {
+  color: #000!important;
+}
+
+.nav-docs {
+  font-weight: 600;
+  position: relative;
+}
+
+.nav-docs-bottom {
+  position: absolute;
+  display: inline-block;
+  z-index: 100000;
+  height: 2px;
+  min-width: 45px;
+  top: 30px;
+  background: #000;
+  left: 0px;
 }
 
 #nav a.nav-open {
@@ -462,7 +482,17 @@ code {
   font-weight: 600;
   text-decoration: none !important;
   margin-bottom: 30px;
-  max-width: 40px;
+  max-width: 53px;
+}
+
+.logo span {
+  margin-left: 8px;
+  font-size: 40px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: italic;
+  line-height: 1.4;
+  color: #04c399;
 }
 
 .logo-closed {
@@ -472,7 +502,7 @@ code {
 }
 
 .logo img {
-  max-width: 25px;
+  max-width: 53px;
   height: auto;
   margin-right: 10px;
 }
@@ -583,6 +613,11 @@ code {
     display: none;
   }
 
+  #header {
+    padding-right: 8%;
+    height: 80px;
+  }
+
   #next {
     display: inline-block;
     position: static!important;
@@ -595,7 +630,7 @@ code {
   }
 
   #content-wrapper {
-    margin-left: 300px;
+    margin-left: 350px;
   }
 }
 
@@ -619,8 +654,9 @@ code {
   }
 
   #header {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-top: 30;
+    padding-left: 5%;
+    padding-right: 5%;
   }
 
   #panel-wrapper a {
@@ -674,15 +710,19 @@ code {
     min-width: 85vw;
     border-right: none;
     margin-left: 0px;
-    padding-right: 40px;
+    padding-right: 10%;
     overflow-x: hidden;
+  }
+
+  .logo-panel {
+    margin-top: 10px;
   }
 
   #panel {
     min-width: 100%;
     margin-top: 20px;
-    padding-left: 20px;
-    padding-right: 40px;
+    padding-left: 5%;
+    padding-right: 6%;
     margin-left: 0px;
     overflow-x: hidden;
   }
