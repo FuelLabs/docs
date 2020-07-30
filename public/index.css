@@ -424,7 +424,7 @@ code {
   width: 1px;
   height: 32px;
   background: #a6b3bc;
-  margin-left: 30px;
+  margin-left: 15px;
 }
 
 #nav a img {
@@ -436,9 +436,13 @@ code {
   margin-left: 30px;
   color: #69737d;
   font-size: 18px;
-  font-weight: 300;
+  font-weight: 500;
   text-decoration: none;
   transition: color 0.2s ease;
+}
+
+.social-first {
+  margin-left: 15px!important;
 }
 
 .nav-hover:hover {
@@ -447,6 +451,18 @@ code {
 
 .nav-docs {
   font-weight: 600;
+  position: relative;
+}
+
+.nav-docs-bottom {
+  position: absolute;
+  display: inline-block;
+  z-index: 100000;
+  height: 2px;
+  min-width: 45px;
+  top: 30px;
+  background: #000;
+  left: 0px;
 }
 
 #nav a.nav-open {
@@ -470,14 +486,13 @@ code {
 }
 
 .logo span {
-  display: none;
   margin-left: 8px;
   font-size: 40px;
   font-weight: 600;
   font-stretch: normal;
   font-style: italic;
   line-height: 1.4;
-  color: #26282a;
+  color: #04c399;
 }
 
 .logo-closed {
