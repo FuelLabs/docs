@@ -1,142 +1,146 @@
 <html>
-  <head>
-    <meta name=”apple-mobile-web-app-capable” content=”yes”>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
-    <title>Fuel | Docs - %%title%%</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./index.css">
-    <link rel="shortcut icon" href="https://fuel.sh/assets/images/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://fuel.sh/assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://fuel.sh/assets/images/favicon-16x16.png">
-  </head>
+<head>
+  <meta name=”apple-mobile-web-app-capable” content=”yes”>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
-  <body>
+  <title>Fuel | Docs - %%title%%</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./index.css">
+  <link rel="shortcut icon" href="https://fuel.sh/assets/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://fuel.sh/assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://fuel.sh/assets/images/favicon-16x16.png">
+</head>
 
-    <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+<body>
 
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/xcode.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
-
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/xcode.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
 
-    <script type="text/javascript">
-      hljs.initHighlightingOnLoad();
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
 
-      window.files = '%%files%%';
 
-      window.addEventListener('load', () => {
 
-        window.scroll(0, 0);
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
 
-        const nav = document.querySelector("#header");
-        const scrollUp = "scroll-up";
-        const scrollDown = "scroll-down";
-        let lastScroll = 0;
-        window.addEventListener("scroll", () => {
-          const currentScroll = window.pageYOffset;
-          if (currentScroll <= 0) {
-            nav.classList.remove(scrollUp);
-            return;
-          }
-          if (currentScroll > lastScroll && !nav.classList.contains(scrollDown)) {
-            // down
-            nav.classList.remove(scrollUp);
-            nav.classList.add(scrollDown);
-          } else if (currentScroll < lastScroll && nav.classList.contains(scrollDown)) {
-            // up
-            nav.classList.remove(scrollDown);
-            nav.classList.add(scrollUp);
-          }
-          lastScroll = currentScroll;
-        });
+    window.files = '%%files%%';
 
-        document.body.onclick = function(e) {   //when the document body is clicked
-          let _orig = e;
+    window.addEventListener('load', () => {
 
-          if (window.event) {
-            e = event.srcElement;           //assign the element clicked to e (IE 6-8)
-          }
-          else {
-            e = e.target;                   //assign the element clicked to e
-          }
+      window.scroll(0, 0);
 
-          if (_orig.target.tagName === 'H1' || _orig.target.tagName === 'H2') {
-            //if the element has a class name, and that is 'someclass' then...
-            // toggle(_orig);
-
-            location.href = '#' + _orig.target.id;
-          }
-        };
-
-        document
-          .getElementById('toggle')
-          .addEventListener("click", event => {
-            document.getElementById('panel-wrapper').classList.toggle("panel-open");
-            document.getElementById('content').classList.toggle("panel-closed");
-            document.getElementById('header_logo').classList.toggle("logo-closed");
-          });
+      const nav = document.querySelector("#header");
+      const scrollUp = "scroll-up";
+      const scrollDown = "scroll-down";
+      let lastScroll = 0;
+      window.addEventListener("scroll", () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll <= 0) {
+          nav.classList.remove(scrollUp);
+          return;
+        }
+        if (currentScroll > lastScroll && !nav.classList.contains(scrollDown)) {
+          // down
+          nav.classList.remove(scrollUp);
+          nav.classList.add(scrollDown);
+        } else if (currentScroll < lastScroll && nav.classList.contains(scrollDown)) {
+          // up
+          nav.classList.remove(scrollDown);
+          nav.classList.add(scrollUp);
+        }
+        lastScroll = currentScroll;
       });
-    </script>
 
-    <div id="container">
-      <div id="header">
-        <a id="header_logo" class="logo header-logo" href="https://fuel.sh">
-          <img src="./logo.svg" />
-          <span>Fuel</span>
+      document.body.onclick = function (e) {   //when the document body is clicked
+        let _orig = e;
+
+        if (window.event) {
+          e = event.srcElement;           //assign the element clicked to e (IE 6-8)
+        }
+        else {
+          e = e.target;                   //assign the element clicked to e
+        }
+
+        if (_orig.target.tagName === 'H1' || _orig.target.tagName === 'H2') {
+          //if the element has a class name, and that is 'someclass' then...
+          // toggle(_orig);
+
+          location.href = '#' + _orig.target.id;
+        }
+      };
+
+      document
+        .getElementById('toggle')
+        .addEventListener("click", event => {
+          document.getElementById('panel-wrapper').classList.toggle("panel-open");
+          document.getElementById('content').classList.toggle("panel-closed");
+          document.getElementById('header_logo').classList.toggle("logo-closed");
+        });
+    });
+  </script>
+
+  <div id="container">
+    <div id="header">
+      <a id="header_logo" class="logo header-logo" href="https://fuel.sh">
+        <img src="./logo.svg" />
+      </a>
+
+      <div></div>
+
+      <div id="nav">
+        <img id="toggle" src="./open-menu.svg" width="20" height="20" />
+        <a class="nav-hover" href="https://rinkeby.fuel.sh">Network</a>
+        <a href="https://docs.fuel.sh" class="nav-hover nav-docs nav-open">
+          <b>Docs</b>
+          <span class="nav-docs-bottom"></span>
         </a>
-
-        <div></div>
-
-        <div id="nav">
-          <img id="toggle" src="./open-menu.svg" width="20" height="20" />
-          <a class="nav-hover" href="https://rinkeby.fuel.sh/network">Network</a>
-          <a href="https://docs.fuel.sh" class="nav-hover nav-docs nav-open">
-            <b>Docs</b>
-            <span class="nav-docs-bottom"></span>
-          </a>
-          <span class="nav-break"></span>
-          <a href="https://github.com/fuellabs" target="_blank" class="nav-open social social-first"><img src="./github.svg" /></a>
-          <a href="https://discord.gg/DDWxYY6" target="_blank" class="nav-open social"><img src="./discord.svg" /></a>
-        </div>
+        <span class="nav-break"></span>
+        <a href="https://github.com/FuelLabs" target="_blank" class="nav-open social social-first"><img src="./github.svg" /></a>
+        <a href="https://discord.gg/DDWxYY6" target="_blank" class="nav-open social"><img src="./discord.svg" /></a>
       </div>
+    </div>
 
-      <div id="panel-wrapper"><div id="panel"></div></div>
+    <div id="panel-wrapper">
+      <div id="panel"></div>
+    </div>
 
-      <div id="docs" class="docs">
-        <div id="content-wrapper">
-          <div id="content">
-            %%content%%
-            <div id="edit-wrapper">
-              <a id="edit" href="https://github.com/FuelLabs/docs/blob/master/src%%file%%">
-                Edit this page
-                <img src="./edit.svg" />
-              </a>
-            </div>
-            <div id="bottom">
-              <a id="next" class="%%showBack%% next-back" href="%%back%%">
-                <span><i>Previous</i></span>
-                <div class="next-first"><img class="next-flip" src="./next.svg" /> %%backTitle%%</div>
-                <div class="next-second"><img class="next-flip" src="./next.svg" /> Previous</div>
-              </a>
-              <div></div>
-              <a id="next" href="%%next%%">
-                <span><i>Next</i></span>
-                <div class="next-first">%%nextTitle%% <img src="./next.svg" /></div>
-                <div class="next-second">Next <img src="./next.svg" /></div>
-              </a>
-            </div>
+    <div id="docs" class="docs">
+      <div id="content-wrapper">
+        <div id="content">
+          %%content%%
+          <div id="edit-wrapper">
+            <a id="edit" href="https://github.com/FuelLabs/docs/blob/master/src%%file%%">
+              Edit this page
+              <img src="./edit.svg" />
+            </a>
+          </div>
+          <div id="bottom">
+            <a id="next" class="%%showBack%% next-back" href="%%back%%">
+              <span><i>Previous</i></span>
+              <div class="next-first"><img class="next-flip" src="./next.svg" /> %%backTitle%%</div>
+              <div class="next-second"><img class="next-flip" src="./next.svg" /> Previous</div>
+            </a>
+            <div></div>
+            <a id="next" href="%%next%%">
+              <span><i>Next</i></span>
+              <div class="next-first">%%nextTitle%% <img src="./next.svg" /></div>
+              <div class="next-second">Next <img src="./next.svg" /></div>
+            </a>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="./index.js"></script>
+  <script src="./index.js"></script>
 
   <body>
+
 </html>
