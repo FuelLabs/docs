@@ -21,9 +21,7 @@ Transaction data that is signed off-chain. The unsigned transaction data is [ser
 
 Implicit data (`data`) is one 32-byte hash _per input_, and uniquely identifies what is being spent by that input (a [UTXO ID](./Outputs.md) or a [deposit ID](./Deposits.md)).
 
-TODO how is the transaction ID computed? EIP-712?
-
-TODO how is this specifically serialized and packed?
+The transaction ID is the [EIP-712 hash](../0.%20Fundamentals/5.%20Serialization.md) of the hash of the [serialized](../0.%20Fundamentals/5.%20Serialization.md) unsigned transaction data.
 
 TransactionLeaf
 ---
@@ -50,5 +48,3 @@ The minimum transaction leaf size in bytes is set by the parameter `TRANSACTION_
 The maximum transaction leaf size in bytes is set by the parameter `TRANSACTION_SIZE_MAX` (`896`).
 The maximum number of inputs in a single transaction is `INPUTS_MAX` (`8`).
 The maximum number of outputs in a single transaction is `OUTPUTS_MAX` (`8`).
-
-TODO how are lists encoded?

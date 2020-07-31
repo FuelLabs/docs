@@ -46,9 +46,11 @@ const treeToPanel2 = (_tree, state = {}) => _tree
   .map(v => v.children.length
       ? (<div id={v.dir} class={'group ' + (isOpen(state.open, v.dir) ? 'group-now' : '')}>
           <h2 class="group-header" onclick={state => ({ ...state, open: v.dir })}>
-            <a href={normalize(v.path)}>
-              <img src={isOpen(state.open, v.dir) ? arrowDark : arrow} class="arrow" />
-              {title(v.name)}
+            <a href="#">
+              <img
+                src={isOpen(state.open, v.dir) ? arrowDark : arrow}
+                class={isOpen(state.open, v.dir) ? 'arrow arrow-turned' : 'arrow'} />
+                {title(v.name)}
             </a>
           </h2>
           <div class={'group-children ' + (
@@ -145,9 +147,14 @@ function search(pattern) {
 const editIcon = require('./edit.svg');
 const searchIcon = require('./search.svg');
 const searchIconLight = require('./search-gray.svg');
+const logo = require('./logo.svg');
 
 const view = state => (
   <div>
+    <a class="logo logo-panel" href="https://fuel.sh">
+      <img src={logo} />
+      <span>Fuel</span>
+    </a>
     <div id="panel-header">
       <div id="search-wrapper">
         <input type="text" id="search" placeholder="Search..." onkeyup={(state, event) => {

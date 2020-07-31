@@ -12,7 +12,7 @@ jobs:
         run: |
           echo "{ \"replacementPatterns\": [ { \"pattern\": \"^/\", \"replacement\": \"/github/workspace/\" } ] }" > config.json
       - name: Check links
-        uses: gaurav-nelson/github-action-markdown-link-check@1.0.3
+        uses: gaurav-nelson/github-action-markdown-link-check@1.0.4
         with:
           config-file: config.json
 

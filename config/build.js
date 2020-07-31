@@ -1,19 +1,41 @@
-const { list, tree, normalize, title } = require('./files');
+const {list, tree, normalize, title} = require('./files');
 const path = require('path');
 const fs = require('fs').promises;
 const fse = require('fs-extra');
-const showdown  = require('showdown');
-const { markdownToTxt } = require('markdown-to-txt');
+const showdown = require('showdown');
+const {markdownToTxt} = require('markdown-to-txt');
 
-const replaceLinksExtension = {
-  type: "lang",
-  regex: /\[(.*)\]\((.*)\.md\)/g,
-  replace: "[$1]($2.html)",
+// Replace .md with .html
+const replaceLinksExt = {
+  type: 'lang',
+  regex: /\[(.+?)\]\((.+?)\.md\)/g,
+  replace: '[$1]($2.html)',
 };
-showdown.extension('replace-md-links', replaceLinksExtension);
+showdown.extension('replace-md-links', replaceLinksExt);
+
+// Remove "#. " prefix
+const removePrefixExt = {
+  type: 'lang',
+  regex: /(\/|\]\()[0-9]+\.((%20)| )/g,
+  replace: '$1',
+};
+showdown.extension('prefix-md-links', removePrefixExt);
+
+// Make external links open in new tab
+const targetLinksExt = {
+  type: 'html',
+  regex: /(<a\s+(?:[^>]*?\s+)?href=["']http.*?["'])/g,
+  replace: '$1 target="_blank" rel="noopener noreferrer"',
+};
+showdown.extension('target-links', targetLinksExt);
+
 const converter = new showdown.Converter({
   tables: true,
-  extensions: ['replace-md-links'],
+  extensions: [
+    'replace-md-links',
+    'prefix-md-links',
+    'target-links',
+  ],
 });
 
 const src = './src/';
@@ -22,13 +44,19 @@ const build = './build/';
 const index = './build/index.html';
 const assets = './assets/';
 
-const treeToPanel = _tree => _tree
-  .map(v => v.children.length
-      ? `<div class="group"><h2 class="group-header">${title(v.name)}</h2> <div class="group-children">${treeToPanel(v.children)}</div></div>`
-      : `<a class="link" href="${normalize(v.path)}">${title(v.name)}</a>`)
-  .join('');
+const treeToPanel = _tree =>
+    _tree
+        .map(
+            v => v.children.length ?
+                `<div class="group"><h2 class="group-header">${
+                    title(v.name)}</h2> <div class="group-children">${
+                    treeToPanel(v.children)}</div></div>` :
+                `<a class="link" href="${normalize(v.path)}">${
+                    title(v.name)}</a>`)
+        .join('');
 
-const filterVersion = (_tree, version = 'v1.0.0') => _tree.filter(v => v.name === version)[0].children;
+const filterVersion = (_tree, version = 'v1.0.0') =>
+    _tree.filter(v => v.name === version)[0].children;
 
 (async () => {
   let indexFile = false;
@@ -51,17 +79,21 @@ const filterVersion = (_tree, version = 'v1.0.0') => _tree.filter(v => v.name ==
   var i = 0;
   for (const file of arr) {
     const content = await fs.readFile(path.join(src, file), 'utf8');
-    const html = header
-      .replace("'%%files%%'", arrFiles)
-      .replace('"%%files%%"', arrFiles)
-      .replace('%%file%%', file)
-      .replace('%%nextTitle%%', title(arr[i + 1] || arr[0]))
-      .replace('%%next%%', normalize(arr[i + 1] || arr[0]))
-      .replace('%%title%%', title(file))
-      .replace('%%content%%', converter.makeHtml(content))
-      .replace('%%panel%%', panel);
+    const html =
+        header.replace('\'%%files%%\'', arrFiles)
+            .replace('"%%files%%"', arrFiles)
+            .replace('%%file%%', file)
+            .replace('%%showBack%%', arr[i - 1] ? 'show-back' : 'hide-back')
+            .replace('%%backTitle%%', title(arr[i - 1] || ''))
+            .replace('%%back%%', normalize(arr[i - 1] || ''))
+            .replace('%%nextTitle%%', title(arr[i + 1] || arr[0]))
+            .replace('%%next%%', normalize(arr[i + 1] || arr[0]))
+            .replace('%%title%%', title(file))
+            .replace('%%content%%', converter.makeHtml(content))
+            .replace('%%panel%%', panel);
     await fse.outputFile(path.join(dist, normalize(file)), html);
-    await fse.outputFile(path.join(dist, normalize(file) + '.md'), markdownToTxt(content));
+    await fse.outputFile(
+        path.join(dist, normalize(file) + '.md'), markdownToTxt(content));
 
     if (!indexFile) {
       await fse.outputFile(path.join(dist, 'index.html'), html);
@@ -69,5 +101,4 @@ const filterVersion = (_tree, version = 'v1.0.0') => _tree.filter(v => v.name ==
     }
     i++;
   }
-
 })();
