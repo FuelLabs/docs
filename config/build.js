@@ -21,11 +21,20 @@ const removePrefixExt = {
 };
 showdown.extension('prefix-md-links', removePrefixExt);
 
+// Make external links open in new tab
+const targetLinksExt = {
+  type: 'html',
+  regex: /(<a\s+(?:[^>]*?\s+)?href=["']http.*?["'])/g,
+  replace: '$1 target="_blank" rel="noopener noreferrer"',
+};
+showdown.extension('target-links', targetLinksExt);
+
 const converter = new showdown.Converter({
   tables: true,
   extensions: [
     'replace-md-links',
     'prefix-md-links',
+    'target-links',
   ],
 });
 
