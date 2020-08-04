@@ -1,6 +1,22 @@
 import "regenerator-runtime";
 import { h, app } from 'hyperapp';
 import styled from 'hyperapp-styled-components';
+import fuel from '@fuel-js/wallet';
+
+// window fuel
+window.fuel = fuel;
+
+window.consoleLog = (...args) => {
+  document.getElementById('run-console').innerHTML += `
+    <div class="run-console-entry">${args.join('')}</div>
+  `;
+};
+
+window.consoleError = (...args) => {
+  document.getElementById('run-console').innerHTML += `
+    <div class="run-console-entry entry-error">${args.join('')}</div>
+  `;
+};
 
 function is_numeric(str){
   return /^\d+$/.test(str);

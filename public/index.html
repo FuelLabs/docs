@@ -39,6 +39,11 @@
 
       window.scroll(0, 0);
 
+      var is_root = location.pathname == "/";
+      if (is_root) {
+        window.location.replace("https://docs.fuel.sh/v1.0.0/Introduction/Welcome.html");
+      }
+
       const nav = document.querySelector("#header");
       const scrollUp = "scroll-up";
       const scrollDown = "scroll-down";
@@ -104,10 +109,11 @@
           <b>Docs</b>
           <span class="nav-docs-bottom"></span>
         </a>
-        <span class="nav-break"></span>
         <a href="https://github.com/FuelLabs" target="_blank" class="nav-open social social-first"><img
             src="./github.svg" /></a>
-        <a href="https://discord.gg/xfpK4Pe" target="_blank" class="nav-open social"><img src="./discord.svg" /></a>
+        <a href="https://discord.gg/xfpK4Pe" target="_blank" class="nav-open social">
+          <img src="./discord.svg" />
+        </a>
       </div>
     </div>
 

@@ -4,7 +4,7 @@
   "description": "The Fuel documentation.",
   "main": "config/build.js",
   "scripts": {
-    "start": "npm run build && http-server dist",
+    "start": "npm run build && http-server dist --cors",
     "build": "parcel build public/index.html --out-dir build && node config/build",
     "publish": "npm run build && now dist && now alias https://dist.fuellabs.now.sh docs.fuel.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -28,6 +28,7 @@
     "copy-text-to-clipboard": "^2.2.0",
     "fs-extra": "^9.0.1",
     "markdown-to-txt": "^1.0.1",
+    "@fuel-js/wallet": "^0.4.1",
     "hyperapp": "^2.0.4",
     "hyperapp-styled-components": "^0.1.2",
     "showdown": "^1.9.1",
