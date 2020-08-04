@@ -36,7 +36,6 @@ pre code {
   font-size: 13.6px!important;
   padding: 20px!important;
   background: #F1F1F1!important;
-  line-height: 33.6px;
 }
 
 summary {
@@ -52,7 +51,45 @@ code {
   display: inline-block;
   margin: 3px;
   font-size: 13.6px;
+  line-height: normal!important;
 }
+
+code span {
+  line-height: normal!important;
+}
+
+/*
+pre {
+  background-color:#eee;
+  overflow:auto;
+  margin:0 0 1em;
+  padding:.5em 1em;
+}
+pre code,
+pre .line-number {
+  Ukuran line-height antara teks di dalam tag <code> dan <span class="line-number"> harus sama!
+  color:black;
+  font: 13px/normal 'Ubuntu Mono', 'Monaco', 'Menlo', 'Consolas', 'source-code-pro', monospace!important;
+  display:block;
+  font-weight: 400;
+}
+
+pre .line-number {
+  float:left;
+  margin:0 1em 0 -1em;
+  border-right:1px solid;
+  text-align:right;
+}
+
+pre .line-number span {
+  display:block;
+  padding:0 .5em 0 1em;
+}
+
+pre .cl {
+  display:block;
+  clear:both;
+} */
 
 p code {
   line-height: 20px;
