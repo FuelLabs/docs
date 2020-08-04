@@ -36,6 +36,7 @@ pre code {
   font-size: 13.6px!important;
   padding: 20px!important;
   background: #F1F1F1!important;
+  line-height: 33.6px;
 }
 
 summary {
@@ -48,11 +49,23 @@ code {
   border-radius: 3px;
   background: #F1F1F1!important;
   padding: 3px!important;
-  padding-top: 0px!important;
-  padding-bottom: 0px!important;
   display: inline-block;
   margin: 3px;
   font-size: 13.6px;
+}
+
+p code {
+  line-height: 20px;
+  font-size: 15px;
+  padding-top: 0px!important;
+  padding-bottom: 0px!important;
+}
+
+li code {
+  line-height: 20px;
+  font-size: 15px;
+  padding-top: 0px!important;
+  padding-bottom: 0px!important;
 }
 
 .group-header {
