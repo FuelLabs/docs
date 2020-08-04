@@ -1,14 +1,30 @@
 import "regenerator-runtime";
 import { h, app } from 'hyperapp';
 import styled from 'hyperapp-styled-components';
-import fuel from '@fuel-js/wallet';
+import importRegex from 'esm-import-regex';
 
-// window fuel
-window.fuel = fuel;
+window.importRegex = importRegex;
+
+function linkify(text) {
+    var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    return text.replace(urlRegex, function(url) {
+        return '<a href="' + url + '" target="_blank">' + url + '</a>';
+    });
+}
 
 window.consoleLog = (...args) => {
   document.getElementById('run-console').innerHTML += `
-    <div class="run-console-entry">${args.join('')}</div>
+    <div class="run-console-entry">${args.map((arg) => {
+      try {
+        if (typeof arg === 'object') {
+          return JSON.stringify(arg, null, 2);
+        }
+
+        return linkify(arg);
+      } catch (err) {
+        return linkify(arg);
+      }
+    }).join('')}</div>
   `;
 };
 
