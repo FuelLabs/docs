@@ -24,6 +24,7 @@ body {
   z-index: 10000;
 }
 
+/*
 pre {
   display: inline-block;
   border-radius: 6px;
@@ -37,6 +38,17 @@ pre code {
   padding: 20px!important;
   background: #F1F1F1!important;
 }
+*/
+
+pre {
+  background: rgb(40, 44, 52) !important;
+  border-radius: 5px!important;
+  font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace!important;
+  font-size: 1em!important;
+  font-weight: normal!important;
+  font-size:13.6px!important;
+  line-height: 1.4!important;
+}
 
 summary {
   outline: none;
@@ -46,13 +58,32 @@ summary {
 
 code {
   border-radius: 3px;
-  background: #F1F1F1!important;
   padding: 3px!important;
-  padding-top: 0px!important;
-  padding-bottom: 0px!important;
   display: inline-block;
   margin: 3px;
   font-size: 13.6px;
+  line-height: normal!important;
+}
+
+code span {
+  line-height: normal!important;
+}
+
+
+p code {
+  line-height: 20px;
+  font-size: 15px;
+  background: #F1F1F1!important;
+  padding-top: 0px!important;
+  padding-bottom: 0px!important;
+}
+
+li code {
+  line-height: 20px;
+  font-size: 15px;
+  background: #F1F1F1!important;
+  padding-top: 0px!important;
+  padding-bottom: 0px!important;
 }
 
 .group-header {
@@ -451,6 +482,7 @@ code {
 
 .nav-docs {
   font-weight: 600;
+  margin-right: 20px;
   position: relative;
 }
 

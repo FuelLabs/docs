@@ -1,6 +1,39 @@
 import "regenerator-runtime";
 import { h, app } from 'hyperapp';
 import styled from 'hyperapp-styled-components';
+import importRegex from 'esm-import-regex';
+
+window.importRegex = importRegex;
+window.rinkebyTx = 'https://rinkeby.fuel.sh/tx/';
+
+function linkify(text) {
+    var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    return text.replace(urlRegex, function(url) {
+        return '<a href="' + url + '" target="_blank">' + url + '</a>';
+    });
+}
+
+window.consoleLog = (...args) => {
+  document.getElementById('run-console').innerHTML += `
+    <div class="run-console-entry">${args.map((arg) => {
+      try {
+        if (typeof arg === 'object') {
+          return JSON.stringify(arg, null, 2);
+        }
+
+        return linkify(arg);
+      } catch (err) {
+        return linkify(arg);
+      }
+    }).join('')}</div>
+  `;
+};
+
+window.consoleError = (...args) => {
+  document.getElementById('run-console').innerHTML += `
+    <div class="run-console-entry entry-error">${args.join('')}</div>
+  `;
+};
 
 function is_numeric(str){
   return /^\d+$/.test(str);
