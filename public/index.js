@@ -4,6 +4,7 @@ import styled from 'hyperapp-styled-components';
 import importRegex from 'esm-import-regex';
 
 window.importRegex = importRegex;
+window.rinkebyTx = 'https://rinkeby.fuel.sh/tx/';
 
 function linkify(text) {
     var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
