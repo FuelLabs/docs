@@ -4,7 +4,7 @@ Witness
 WitnessType
 ---
 
-```
+```js
 enum WitnessType : uint8 {
     Signature = 0,
     Caller = 1,

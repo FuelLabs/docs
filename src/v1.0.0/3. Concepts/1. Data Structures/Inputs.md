@@ -6,7 +6,7 @@ Inputs indicate which state elements (usually: UTXOs) are consumed by a [transac
 InputType
 ---
 
-```
+```js
 enum InputType : uint8 {
     Transfer = 0,
     Deposit = 1,
