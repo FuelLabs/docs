@@ -69,7 +69,7 @@ function tree(list = []) {
   return result;
 }
 
-const isOpen = (path, dir) => path.split('%20').join(' ').indexOf(dir) !== -1;
+const isOpen = (path, dir) => (path || '').split('%20').join(' ').indexOf(dir) !== -1;
 
 // TODO if there's a space in the hierarchy then this doesn't work properly
 const arrow = require('./arrow.svg');
@@ -125,6 +125,9 @@ const filterVersion = (_tree, version = 'v1.0.0') => _tree.filter(v => v.name ==
 // TODO fix search
 function search(pattern) {
   document.getElementById('content').innerHTML = '<h1>Search Results</h1>';
+  document.getElementById('panel-wrapper').classList.toggle("panel-open");
+  document.getElementById('content').classList.toggle("panel-closed");
+  document.getElementById('hamburger').classList.toggle("is-active");
 
   for (const file of window.files.map(normalize)) {
     window.axios.get('https://docs.fuel.sh' + file + '.md')
@@ -190,16 +193,11 @@ const view = state => (
     </a>
     <div id="panel-header">
       <div id="search-wrapper">
-        <input type="text" id="search" placeholder="Search..." onkeyup={(state, event) => {
-          event.preventDefault();
+        <input type="text" id="search" placeholder="Search..." onkeypress={(state, event) => {
           if (event.keyCode === 13) {
             search(event.target.value);
           }
           return state;
-        }} onkeypress={(state, event) => {
-          if (event.keyCode === 13) {
-            search(event.target.value);
-          }
         }} />
         <img src={searchIconLight} />
       </div>

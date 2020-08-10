@@ -19,6 +19,7 @@
 
 <body>
 
+  <link rel="stylesheet" href="hamburgers.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 
   <!--
@@ -95,9 +96,17 @@
       document
         .getElementById('toggle')
         .addEventListener("click", event => {
+          console.log('toggle!');
           document.getElementById('panel-wrapper').classList.toggle("panel-open");
           document.getElementById('content').classList.toggle("panel-closed");
-          document.getElementById('header_logo').classList.toggle("logo-closed");
+
+          // document.getElementById('toggle-open').classList.toggle("logo-closed");
+          // document.getElementById('toggle-closed').classList.toggle("logo-closed");
+
+          document.getElementById('hamburger').classList.toggle("is-active");
+
+
+          // document.getElementById('header_logo').classList.toggle("logo-closed");
         });
     });
   </script>
@@ -111,7 +120,13 @@
       <div></div>
 
       <div id="nav">
-        <img id="toggle" src="./open-menu.svg" width="20" height="20" />
+        <div id="toggle">
+          <button id="hamburger" class="hamburger hamburger--slider" type="button">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
+        </div>
         <a class="nav-hover" href="https://rinkeby.fuel.sh/network">Network</a>
         <a href="https://docs.fuel.sh" class="nav-hover nav-docs nav-open">
           <b>Docs</b>

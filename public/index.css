@@ -638,6 +638,22 @@ li code {
 
 #toggle {
   display: none;
+  z-index: 10000;
+  outline: none;
+}
+
+#toggle button {
+  outline: none;
+}
+
+.hamburger {
+  outline: none!important;
+  transform: scale(.6);
+}
+
+.hamburger-inner {
+  width: 35px;
+  height: 3px;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -648,6 +664,7 @@ li code {
   #header {
     padding-right: 8%;
     height: 80px;
+    z-index: 130000;
   }
 
   #next {
@@ -664,6 +681,10 @@ li code {
   #content-wrapper {
     margin-left: 350px;
   }
+}
+
+.none {
+  display: none;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -775,12 +796,17 @@ li code {
     max-width: 80vw;
   }
 
+  #content h1 {
+    line-height: 1.4em;
+  }
+
   #content-wrapper {
     margin-left: 0px;
   }
 
   #toggle {
     display: block !important;
+    width: 50px;
   }
 
   .nav-break {
