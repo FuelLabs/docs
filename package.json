@@ -6,8 +6,8 @@
   "scripts": {
     "start": "npm run build && http-server dist --cors",
     "build": "parcel build public/index.html --out-dir build && node config/build",
-    "publish": "npm run build && now dist && now alias https://dist.fuellabs.now.sh docs.fuel.sh",
-    "publish-staging": "npm run build && now dist && now alias https://dist.fuellabs.now.sh docs.staging.fuel.sh",
+    "publish": "npm run build && now dist && now alias https://docs-two-eta.vercel.app docs.fuel.sh",
+    "publish-staging": "npm run build && now dist && now alias https://dist-fuellabs.fuel-labs.vercel.app docs.staging.fuel.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

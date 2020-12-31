@@ -6,7 +6,7 @@ Outputs define which state elements (usually: UTXOs) are produced by a [transact
 OutputType
 ---
 
-```
+```js
 enum OutputType : uint8 {
     Transfer = 0,
     Withdraw = 1,
