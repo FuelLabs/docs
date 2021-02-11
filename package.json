@@ -1,12 +1,13 @@
 {
   "name": "fuel-docs",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The Fuel documentation.",
   "main": "config/build.js",
   "scripts": {
     "start": "npm run build && http-server dist --cors",
-    "build": "parcel build public/index.html --out-dir build && node config/build",
-    "publish": "npm run build && now dist && now alias https://docs-two-eta.vercel.app docs.fuel.sh",
+    "build": "npm run clean-locals && parcel build public/index.html --out-dir build && node config/build",
+    "publish": "npm run build && now dist",
+    "clean-locals": "rm -rf src/.DS_Store",
     "publish-staging": "npm run build && now dist && now alias https://dist-fuellabs.fuel-labs.vercel.app docs.staging.fuel.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

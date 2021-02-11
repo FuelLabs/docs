@@ -1,0 +1,9 @@
+{
+    "redirects": [
+      { 
+        "source": "/",
+        "destination": "https://docs.fuel.sh/v1.1.0/Introduction/Welcome.html", 
+        "permanent": true
+      }
+    ]
+  }

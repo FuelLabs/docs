@@ -13,6 +13,12 @@
     <link rel="icon"
         type="image/png"
         href="./favicon.png">
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@FuelLabs_" />
+    <meta name="twitter:title" content="Fuel | Docs" />
+    <meta name="twitter:description" content="Fuel empowers any person on Earth with fast, secure, and cost efficient ERC-20 transfers and swaps using the world's most efficient Optimistic Rollup." />
+    <meta name="twitter:image" content="https://docs.fuel.sh/assets/images/logo.png" />
   </head>
 
   <body>
@@ -28,7 +34,6 @@
     <script type="text/javascript">
       window.files = '%%files%%';
 
-      
       // The function actually applying the offset
       function offsetAnchor() {
         if (location.hash.length !== 0) {
@@ -41,14 +46,12 @@
 
       // Set the offset when entering page with hash present in the url
       setTimeout(offsetAnchor, 0);
-
+    
       window.addEventListener('load', () => {
-
-        // window.scroll(0, 0);
-
         var is_root = location.pathname == "/";
         if (is_root) {
-          window.location.replace("https://docs.fuel.sh/v1.0.0/Introduction/Welcome.html");
+          // Then redirect.
+          window.location.replace("https://docs.fuel.sh/v1.1.0/Introduction/Welcome.html");
         }
 
         const nav = document.querySelector("#header");
@@ -97,14 +100,7 @@
             console.log('toggle!');
             document.getElementById('panel-wrapper').classList.toggle("panel-open");
             document.getElementById('content').classList.toggle("panel-closed");
-
-            // document.getElementById('toggle-open').classList.toggle("logo-closed");
-            // document.getElementById('toggle-closed').classList.toggle("logo-closed");
-
             document.getElementById('hamburger').classList.toggle("is-active");
-
-
-            // document.getElementById('header_logo').classList.toggle("logo-closed");
           });
       });
     </script>

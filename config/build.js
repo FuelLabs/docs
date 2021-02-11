@@ -42,6 +42,7 @@ const converter = new showdown.Converter({
 
 const src = './src/';
 const dist = './dist/';
+const ds_store = './src/.DS_Store';
 const build = './build/';
 const index = './build/index.html';
 const assets = './assets/';
@@ -57,7 +58,7 @@ const treeToPanel = _tree =>
                     title(v.name)}</a>`)
         .join('');
 
-const filterVersion = (_tree, version = 'v1.0.0') =>
+const filterVersion = (_tree, version = 'v1.1.0') =>
     _tree.filter(v => v.name === version)[0].children;
 
 (async () => {
@@ -66,7 +67,6 @@ const filterVersion = (_tree, version = 'v1.0.0') =>
   const arrFiles = JSON.stringify(arr);
   const header = await fs.readFile(index, 'utf8');
   const panel = treeToPanel(filterVersion(tree(src)));
-
   await fse.remove(dist);
 
   // copy assets over

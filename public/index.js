@@ -2,7 +2,7 @@ import "regenerator-runtime";
 import { h, app } from 'hyperapp';
 import styled from 'hyperapp-styled-components';
 
-// set the defualt rinkeby url for transactions to use in the v1.0.0/Getting Started
+// set the defualt rinkeby url for transactions to use in the v1.1.0/Getting Started
 window.rinkebyTx = 'https://rinkeby.fuel.sh/tx/';
 
 // fix table squashing on mobile by wrapping with overflow scrolling
@@ -63,7 +63,6 @@ const title = file => normalize(file.split('/').pop())
   .replace('.md', '')
   .replace('.html', '');
 
-
 function tree(list = []) {
   let result = [];
   let level = {result};
@@ -112,7 +111,7 @@ const treeToPanel2 = (_tree, state = {}) => _tree
           <span class="dot"></span>{title(v.name)}
         </a>));
 
-const filterVersion = (_tree, version = 'v1.0.0') => _tree.filter(v => v.name === version)[0].children;
+const filterVersion = (_tree, version = 'v1.1.0') => _tree.filter(v => v.name === version)[0].children;
 
 // TODO fix search
 async function search(pattern) {
@@ -138,7 +137,7 @@ async function search(pattern) {
         });
 
         let result = fuse.search(pattern);
-        const clean = v => v.replace('https://docs.fuel.sh/v1.0.0/', '')
+        const clean = v => v.replace('https://docs.fuel.sh/v1.1.0/', '')
           .split('__').join(': ').split('_').join(' ');
 
         if (result.length === 0 && response.data.indexOf(pattern) !== -1) {
@@ -203,12 +202,12 @@ const view = state => (
       </div>
     </div>
     {treeToPanel2(filterVersion(tree(window.files)), state)}
-    <div href="#" id="version">v 1.0.0</div>
+    <div href="#" id="version">v 1.1.0</div>
   </div>
 );
 
 const start = window.location.pathname === '/'
-  ? '/v1.0.0/Introduction/Welcome.html'
+  ? '/v1.1.0/Introduction/Welcome.html'
   : window.location.pathname;
 
 app({
